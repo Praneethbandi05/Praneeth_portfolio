@@ -79,13 +79,10 @@ export default function App() {
         {/* Soft Ambient Light Blur tracking mouse cursor */}
         <MouseBlurLight theme={currentTheme} />
 
-        {/* Floating Top Navbar with exclusive "View Resume" button */}
+        {/* Clean Top Navbar with exclusive "View Resume" button */}
         <Navbar
           currentPage={currentPage}
           setCurrentPage={navigateTo}
-          onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-          soundEnabled={soundEnabled}
-          setSoundEnabled={setSoundEnabled}
           theme={currentTheme}
         />
 
@@ -249,7 +246,7 @@ export default function App() {
         {/* Global Footer on All Pages */}
         <Footer onNavigate={navigateTo} theme={currentTheme} />
 
-        {/* Global Command Palette (⌘K) */}
+        {/* Global Command Palette (activated via Ctrl+K / Cmd+K) */}
         <CommandPalette
           isOpen={isCommandPaletteOpen}
           onClose={() => setIsCommandPaletteOpen(false)}

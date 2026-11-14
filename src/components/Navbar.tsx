@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Command, Volume2, VolumeX, Download } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 
 export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'blog' | 'contact';
@@ -7,18 +7,12 @@ export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | '
 interface NavbarProps {
   currentPage: PageId;
   setCurrentPage: (page: PageId) => void;
-  onOpenCommandPalette: () => void;
-  soundEnabled: boolean;
-  setSoundEnabled: (val: boolean) => void;
   theme?: 'dark' | 'light';
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentPage,
   setCurrentPage,
-  onOpenCommandPalette,
-  soundEnabled,
-  setSoundEnabled,
   theme = 'dark',
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,14 +37,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const toggleSound = () => {
-    const active = soundManager.toggle();
-    setSoundEnabled(active);
-  };
-
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 py-3 backdrop-blur-xl transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-40 py-3.5 backdrop-blur-xl transition-all duration-500 ${
         isLight
           ? 'bg-white/90 border-b border-slate-200/90 shadow-sm text-slate-800'
           : 'bg-[#0a0d18]/90 border-b border-white/10 shadow-[0_10px_35px_-5px_rgba(0,0,0,0.5)] text-white'
@@ -118,43 +107,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </div>
 
-          {/* Action Toolbar */}
-          <div className="hidden sm:flex items-center gap-2.5">
-            {/* Command Palette Button */}
-            <button
-              onClick={() => {
-                soundManager.playClick();
-                onOpenCommandPalette();
-              }}
-              title="Command Palette (Ctrl + K)"
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-colors ${
-                isLight
-                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700'
-                  : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300'
-              }`}
-            >
-              <Command className="w-3.5 h-3.5 text-cyan-500" />
-              <span className="hidden md:inline">⌘K</span>
-            </button>
-
-            {/* Audio Toggle */}
-            <button
-              onClick={toggleSound}
-              title={soundEnabled ? 'Mute Sound FX' : 'Enable High-Tech Audio FX'}
-              className={`p-2 rounded-lg border transition-colors ${
-                isLight
-                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700'
-                  : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300'
-              }`}
-            >
-              {soundEnabled ? (
-                <Volume2 className="w-4 h-4 text-cyan-500" />
-              ) : (
-                <VolumeX className="w-4 h-4 text-slate-400" />
-              )}
-            </button>
-
-            {/* Top Taskbar Exclusive "View Resume" Button - Downloads Bandi Praneeth's Uploaded Resume */}
+          {/* Action Toolbar: Exclusive "View Resume" button (⌘K and Audio toggle removed per request) */}
+          <div className="hidden sm:flex items-center">
             <a
               href="/Bandi_Praneeth_Resume.pdf"
               download="Bandi_Praneeth_Resume.pdf"
@@ -215,22 +169,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            <div className={`pt-2 border-t flex items-center justify-between ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
-              <button
-                onClick={toggleSound}
-                className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 ${
-                  isLight ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-slate-300'
-                }`}
-              >
-                {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-500" /> : <VolumeX className="w-4 h-4" />}
-                <span className="text-[11px] font-mono">{soundEnabled ? 'Audio On' : 'Muted'}</span>
-              </button>
-
+            <div className={`pt-2 border-t flex items-center justify-end ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
               <a
                 href="/Bandi_Praneeth_Resume.pdf"
                 download="Bandi_Praneeth_Resume.pdf"
                 onClick={() => soundManager.playPulse()}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs shadow-md"
+                className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs shadow-md"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>View Resume</span>
