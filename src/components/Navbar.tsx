@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Command, Volume2, VolumeX, Moon, Sun, Download, FileText } from 'lucide-react';
+import { Menu, X, Command, Volume2, VolumeX, Download, FileText } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 
 export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'blog' | 'contact';
@@ -11,8 +11,6 @@ interface NavbarProps {
   onOpenResume: () => void;
   soundEnabled: boolean;
   setSoundEnabled: (val: boolean) => void;
-  isDarkMode: boolean;
-  setIsDarkMode: (val: boolean) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,8 +20,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenResume,
   soundEnabled,
   setSoundEnabled,
-  isDarkMode,
-  setIsDarkMode,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -49,11 +45,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const toggleSound = () => {
     const active = soundManager.toggle();
     setSoundEnabled(active);
-  };
-
-  const toggleTheme = () => {
-    soundManager.playClick();
-    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -102,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </div>
 
-          {/* Action Toolbar */}
+          {/* Action Toolbar (Theme toggle removed) */}
           <div className="hidden sm:flex items-center gap-2">
             {/* Command Palette Button */}
             <button
@@ -130,21 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              title={isDarkMode ? 'Light Mode' : 'Dark Mode'}
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-colors"
-            >
-              {isDarkMode ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-cyan-400" />
-              )}
-            </button>
-
-            {/* Resume Button - Direct Save & View */}
-            <div className="flex items-center gap-1">
+            {/* Resume Controls: View CV & Save CV */}
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => {
                   soundManager.playPulse();
@@ -161,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 download="Bandi_Praneeth_Resume.pdf"
                 onClick={() => soundManager.playPulse()}
                 className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition-all"
-                title="Save Attached Resume PDF"
+                title="Save Official Resume PDF"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Save CV</span>
@@ -218,12 +196,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className="p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs flex items-center gap-1.5"
                 >
                   {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4" />}
-                </button>
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs"
-                >
-                  {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
                 </button>
               </div>
 

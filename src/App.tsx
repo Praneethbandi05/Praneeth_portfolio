@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ToastProvider } from './components/Toast';
-import { CustomCursor } from './components/CustomCursor';
 import { Navbar, PageId } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -14,14 +13,13 @@ import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 import { CommandPalette } from './components/CommandPalette';
 import { soundManager } from './utils/sound';
-import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, Mail, BookOpen } from 'lucide-react';
+import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, BookOpen } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(soundManager.enabled);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
   // Hash-based page routing support
   useEffect(() => {
@@ -59,11 +57,8 @@ export default function App() {
 
   return (
     <ToastProvider>
-      <div className={`min-h-screen ${isDarkMode ? 'dark bg-[#07090e] text-[#f1f5f9]' : 'bg-[#0f1422] text-[#f8fafc]'} selection:bg-cyan-500/20 selection:text-cyan-300 font-sans antialiased overflow-x-hidden transition-colors duration-300 flex flex-col justify-between`}>
-        {/* Desktop Custom Follower Cursor */}
-        <CustomCursor />
-
-        {/* Floating Top Navbar */}
+      <div className="min-h-screen dark bg-[#07090e] text-[#f1f5f9] selection:bg-cyan-500/20 selection:text-cyan-300 font-sans antialiased overflow-x-hidden flex flex-col justify-between">
+        {/* Floating Top Navbar (Light/Dark theme toggle removed) */}
         <Navbar
           currentPage={currentPage}
           setCurrentPage={navigateTo}
@@ -71,8 +66,6 @@ export default function App() {
           onOpenResume={() => setIsResumeOpen(true)}
           soundEnabled={soundEnabled}
           setSoundEnabled={setSoundEnabled}
-          isDarkMode={isDarkMode}
-          setIsDarkMode={setIsDarkMode}
         />
 
         {/* Main Content Area - Render strictly the Selected Page */}
@@ -244,8 +237,6 @@ export default function App() {
           onClose={() => setIsCommandPaletteOpen(false)}
           onNavigate={navigateTo}
           onOpenResume={() => setIsResumeOpen(true)}
-          isDarkMode={isDarkMode}
-          setIsDarkMode={setIsDarkMode}
           soundEnabled={soundEnabled}
           setSoundEnabled={setSoundEnabled}
         />

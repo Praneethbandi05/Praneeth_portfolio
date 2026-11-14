@@ -33,27 +33,6 @@ export const NeuralCanvas: React.FC = () => {
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
-    // Mouse coordinates
-    const mouse = {
-      x: -1000,
-      y: -1000,
-      radius: 140,
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseleave', handleMouseLeave);
-
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
@@ -64,7 +43,7 @@ export const NeuralCanvas: React.FC = () => {
     window.addEventListener('resize', handleResize);
 
     // Initialize nodes
-    const nodeCount = Math.min(Math.floor((width * height) / 12000), 90);
+    const nodeCount = Math.min(Math.floor((width * height) / 12000), 80);
     let nodes: Node[] = [];
     let packets: SignalPacket[] = [];
 
@@ -81,7 +60,7 @@ export const NeuralCanvas: React.FC = () => {
         const col = colors[Math.floor(Math.random() * colors.length)];
         const layer = Math.random() < 0.3 ? 0 : Math.random() < 0.7 ? 1 : 2;
         const radius = layer === 0 ? 1.5 : layer === 1 ? 2.5 : 3.5;
-        const speedMultiplier = layer === 0 ? 0.3 : layer === 1 ? 0.6 : 0.9;
+        const speedMultiplier = layer === 0 ? 0.3 : layer === 1 ? 0.5 : 0.7;
 
         nodes.push({
           x: Math.random() * width,
@@ -106,13 +85,13 @@ export const NeuralCanvas: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Spawn signal packets along connections
+      // Spawn signal packets along connections autonomously
       packetTimer++;
-      if (packetTimer % 45 === 0 && packets.length < 15 && nodes.length > 2) {
+      if (packetTimer % 40 === 0 && packets.length < 16 && nodes.length > 2) {
         const fromIdx = Math.floor(Math.random() * nodes.length);
         // Find closest neighbor
         let closestIdx = -1;
-        let minDist = 130;
+        let minDist = 140;
         for (let j = 0; j < nodes.length; j++) {
           if (fromIdx === j) continue;
           const dx = nodes[fromIdx].x - nodes[j].x;
@@ -128,7 +107,7 @@ export const NeuralCanvas: React.FC = () => {
             fromNode: fromIdx,
             toNode: closestIdx,
             progress: 0,
-            speed: 0.015 + Math.random() * 0.02,
+            speed: 0.012 + Math.random() * 0.018,
             color: nodes[fromIdx].color,
           });
         }
@@ -143,7 +122,7 @@ export const NeuralCanvas: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxConnectDistance) {
-            const opacity = (1 - dist / maxConnectDistance) * 0.35;
+            const opacity = (1 - dist / maxConnectDistance) * 0.3;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -183,7 +162,7 @@ export const NeuralCanvas: React.FC = () => {
         ctx.shadowColor = pkt.color;
         ctx.shadowBlur = 8;
         ctx.fill();
-        ctx.shadowBlur = 0; // reset
+        ctx.shadowBlur = 0;
       }
 
       // Update & Draw Nodes
@@ -197,25 +176,6 @@ export const NeuralCanvas: React.FC = () => {
         // Bounce off edges gently
         if (node.x < 0 || node.x > width) node.vx *= -1;
         if (node.y < 0 || node.y > height) node.vy *= -1;
-
-        // Mouse attraction/repulsion interaction
-        const mdx = mouse.x - node.x;
-        const mdy = mouse.y - node.y;
-        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-
-        if (mdist < mouse.radius) {
-          const force = (1 - mdist / mouse.radius) * 1.5;
-          node.x -= (mdx / mdist) * force * 1.2;
-          node.y -= (mdy / mdist) * force * 1.2;
-
-          // Draw interactive synaptic beam to cursor
-          ctx.beginPath();
-          ctx.moveTo(node.x, node.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - mdist / mouse.radius) * 0.45})`;
-          ctx.lineWidth = 0.9;
-          ctx.stroke();
-        }
 
         // Draw node body
         ctx.beginPath();
@@ -246,8 +206,6 @@ export const NeuralCanvas: React.FC = () => {
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
@@ -255,7 +213,7 @@ export const NeuralCanvas: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-auto w-full h-full opacity-70 transition-opacity duration-1000"
+      className="absolute inset-0 pointer-events-none w-full h-full opacity-65 transition-opacity duration-1000"
       style={{ zIndex: 1 }}
     />
   );

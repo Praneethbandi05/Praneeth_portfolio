@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, FolderGit2, Briefcase, Award, Wrench, FileText, Mail, Volume2, VolumeX, Moon, Sun, ArrowRight, X, Home, User, BookOpen } from 'lucide-react';
+import { Search, FolderGit2, Briefcase, Award, Wrench, FileText, Mail, Volume2, VolumeX, ArrowRight, X, Home, User, BookOpen } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 import { useToast } from './Toast';
 import { PageId } from './Navbar';
@@ -10,8 +10,6 @@ interface CommandPaletteProps {
   onClose: () => void;
   onNavigate: (page: PageId) => void;
   onOpenResume: () => void;
-  isDarkMode: boolean;
-  setIsDarkMode: (val: boolean) => void;
   soundEnabled: boolean;
   setSoundEnabled: (val: boolean) => void;
 }
@@ -21,8 +19,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onClose,
   onNavigate,
   onOpenResume,
-  isDarkMode,
-  setIsDarkMode,
   soundEnabled,
   setSoundEnabled,
 }) => {
@@ -131,7 +127,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'act-view-resume',
       category: 'Resume',
-      label: 'Open Resume Viewer Modal',
+      label: 'View Fullscreen Resume PDF',
       icon: FileText,
       action: () => {
         onClose();
@@ -158,17 +154,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         const next = soundManager.toggle();
         setSoundEnabled(next);
         showToast(next ? 'Sound FX activated' : 'Sound muted');
-        onClose();
-      },
-    },
-    {
-      id: 'act-toggle-theme',
-      category: 'Settings',
-      label: isDarkMode ? 'Switch to Light Theme' : 'Switch to Dark Theme',
-      icon: isDarkMode ? Sun : Moon,
-      action: () => {
-        setIsDarkMode(!isDarkMode);
-        showToast(!isDarkMode ? 'Dark theme enabled' : 'Light theme enabled');
         onClose();
       },
     },
