@@ -126,7 +126,6 @@ export const PROJECTS: Project[] = [
       "Responsive cross-platform mobile user interface"
     ],
     metrics: "Practical smart farming solution • Flutter & Dart",
-    githubUrl: "https://github.com/PraneethBandi05",
     architectureHighlights: [
       "Modular Flutter widget tree for responsive mobile experience",
       "Dynamic agricultural logic processing soil and crop parameters",
@@ -150,7 +149,6 @@ export const PROJECTS: Project[] = [
       "Deployed the application on AWS cloud infrastructure for hosting and accessibility"
     ],
     metrics: "Deployed on AWS Cloud • Full Stack System",
-    githubUrl: "https://github.com/PraneethBandi05",
     architectureHighlights: [
       "React interactive frontend with real-time record viewing",
       "Database-driven module using SQLite for reliable ledger management",
@@ -174,7 +172,6 @@ export const PROJECTS: Project[] = [
       "Non-invasive diagnostic experimentation prototype"
     ],
     metrics: "Deep Learning • Grad-CAM Explainable AI",
-    githubUrl: "https://github.com/PraneethBandi05",
     architectureHighlights: [
       "Retinal fundus preprocessing and vessel enhancement",
       "CNN classification backbone fine-tuned for vascular indicators",

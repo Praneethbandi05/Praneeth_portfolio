@@ -30,37 +30,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
   ];
 
   return (
-    <footer className={`border-t pt-16 pb-12 font-sans transition-colors duration-500 ${
+    <footer className={`border-t py-10 font-sans transition-colors duration-500 ${
       isLight ? 'bg-slate-100/90 border-slate-200 text-slate-600' : 'border-white/10 bg-[#05070c] text-slate-400'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b ${
+        <div className={`flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b ${
           isLight ? 'border-slate-200' : 'border-white/5'
         }`}>
-          {/* Logo & Info */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1px]">
-                <div className={`w-full h-full rounded-lg flex items-center justify-center font-display font-black text-xs ${
-                  isLight ? 'bg-slate-900 text-white' : 'bg-[#07090e] text-white'
-                }`}>
-                  BP
-                </div>
-              </div>
-              <span className={`font-display font-bold text-base tracking-tight ${
-                isLight ? 'text-slate-900' : 'text-white'
-              }`}>
-                {PERSONAL_INFO.name}
-              </span>
-            </div>
-            <p className={`text-xs max-w-sm leading-relaxed ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
-              Motivated to apply academic knowledge and practical experience to solve real-world challenges.
-            </p>
-          </div>
-
           {/* Quick Page Links */}
           {onNavigate && (
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-mono">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2 text-xs font-mono">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
@@ -79,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
             </div>
           )}
 
-          {/* External Links */}
+          {/* External Social Profiles */}
           <div className="flex items-center gap-3">
             <a
               href={PERSONAL_INFO.contacts.github}
@@ -121,10 +100,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+        {/* Bottom Bar: Copyright & Back to Top */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <p className={isLight ? 'text-slate-500' : 'text-slate-500'}>
-            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. Built with React, TypeScript &amp; Tailwind CSS.
+            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
           </p>
 
           <button
