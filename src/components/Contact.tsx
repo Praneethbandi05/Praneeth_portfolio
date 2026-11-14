@@ -63,7 +63,10 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
           body: JSON.stringify({
             name: formData.name,
             email: formData.email,
-            subject: formData.subject,
+            _replyto: formData.email,
+            subject: `[Portfolio Inquiry] ${formData.subject} - ${formData.name}`,
+            _subject: `[Portfolio Inquiry] ${formData.subject} - ${formData.name}`,
+            topic: formData.subject,
             message: formData.message,
           }),
         });

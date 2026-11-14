@@ -50,7 +50,7 @@ export const PERSONAL_INFO = {
     codechef: "https://www.codechef.com/users/vvit23bq1a6106",
     codechefUsername: "vvit23bq1a6106",
     resumePdfUrl: "/Bandi_Praneeth_Resume.pdf",
-    formspreeEndpoint: "https://formspree.io/f/YOUR_FORM_ID"
+    formspreeEndpoint: "https://formspree.io/f/xdegavkg"
   },
   stats: [
     { label: "Coding Problems Solved", value: "600+", desc: "Solved 600+ CodeChef problems" },
