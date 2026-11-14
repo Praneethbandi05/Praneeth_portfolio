@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Command, Volume2, VolumeX, Moon, Sun, FileText, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, Command, Volume2, VolumeX, Moon, Sun, Download, FileText } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 
+export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'contact';
+
 interface NavbarProps {
+  currentPage: PageId;
+  setCurrentPage: (page: PageId) => void;
   onOpenCommandPalette: () => void;
   onOpenResume: () => void;
   soundEnabled: boolean;
@@ -12,6 +16,8 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
+  currentPage,
+  setCurrentPage,
   onOpenCommandPalette,
   onOpenResume,
   soundEnabled,
@@ -19,48 +25,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   isDarkMode,
   setIsDarkMode,
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
 
-  const navLinks = [
+  const navLinks: { id: PageId; label: string }[] = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
-    { id: 'research', label: 'Research Lab' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-
-      // Determine active section
-      const sections = navLinks.map((l) => document.getElementById(l.id));
-      const scrollPos = window.scrollY + 180;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
-        if (sec && sec.offsetTop <= scrollPos) {
-          setActiveSection(navLinks[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollTo = (id: string) => {
+  const handleNavClick = (id: PageId) => {
     soundManager.playClick();
+    setCurrentPage(id);
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.location.hash = `#/${id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleSound = () => {
@@ -74,48 +56,35 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-5'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-40 py-3 bg-[#0a0d18]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_35px_-5px_rgba(0,0,0,0.5)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav
-          className={`flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-2xl transition-all duration-300 ${
-            isScrolled
-              ? 'bg-[#0a0d18]/85 backdrop-blur-xl border border-white/10 shadow-[0_10px_35px_-5px_rgba(0,0,0,0.5)]'
-              : 'bg-transparent border border-transparent'
-          }`}
-        >
-          {/* Logo / Monogram */}
+        <nav className="flex items-center justify-between py-1">
+          {/* Logo / Name - WITHOUT DOMAIN TITLE */}
           <button
-            onClick={() => scrollTo('home')}
-            className="flex items-center gap-2.5 text-left group focus:outline-none"
+            onClick={() => handleNavClick('home')}
+            className="flex items-center gap-3 text-left group focus:outline-none"
           >
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-[1px] shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-shadow">
               <div className="w-full h-full bg-[#080b14] rounded-xl flex items-center justify-center font-display font-black text-sm tracking-wider text-white">
                 BP
               </div>
             </div>
-            <div>
-              <div className="font-display font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
-                <span>Bandi Praneeth</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              </div>
-              <div className="text-[10px] font-mono text-cyan-400/90 tracking-widest uppercase">
-                AI & ML Engineer
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="font-display font-bold text-base tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+                Bandi Praneeth
+              </span>
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
             </div>
           </button>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items (Separate Pages) */}
           <div className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-full px-3 py-1">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = currentPage === link.id;
               return (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
+                  onClick={() => handleNavClick(link.id)}
                   onMouseEnter={() => soundManager.playHover()}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all relative ${
                     isActive
@@ -173,31 +142,42 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Resume Button */}
-            <button
-              onClick={() => {
-                soundManager.playPulse();
-                onOpenResume();
-              }}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition-all shadow-sm"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Resume / CV</span>
-            </button>
+            {/* Resume Button - Direct Download & View */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => {
+                  soundManager.playPulse();
+                  onOpenResume();
+                }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 text-xs font-medium transition-all"
+                title="View Resume Document"
+              >
+                <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                <span>View CV</span>
+              </button>
+              <a
+                href="/Bandi_Praneeth_Resume.pdf"
+                download="Bandi_Praneeth_Resume.pdf"
+                onClick={() => soundManager.playPulse()}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition-all"
+                title="Download Attached Resume PDF"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download CV</span>
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => {
-                soundManager.playClick();
-                onOpenCommandPalette();
-              }}
-              className="p-2 rounded-lg bg-white/5 border border-white/10 text-cyan-400"
-              aria-label="Search"
+            <a
+              href="/Bandi_Praneeth_Resume.pdf"
+              download="Bandi_Praneeth_Resume.pdf"
+              className="p-2 rounded-lg bg-cyan-500 text-slate-950 font-bold"
+              title="Download Resume"
             >
-              <Command className="w-4 h-4" />
-            </button>
+              <Download className="w-4 h-4" />
+            </a>
             <button
               onClick={() => {
                 soundManager.playClick();
@@ -218,9 +198,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               {navLinks.map((link) => (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
+                  onClick={() => handleNavClick(link.id)}
                   className={`px-3 py-2 rounded-xl text-left text-xs font-medium transition-colors ${
-                    activeSection === link.id
+                    currentPage === link.id
                       ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
                       : 'text-slate-300 hover:bg-white/5'
                   }`}
@@ -246,16 +226,25 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </button>
               </div>
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenResume();
-                }}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-semibold text-xs shadow-lg shadow-cyan-500/25"
-              >
-                <FileText className="w-3.5 h-3.5" />
-                <span>View Full CV</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenResume();
+                  }}
+                  className="px-3 py-2 rounded-xl bg-white/5 text-slate-300 font-medium text-xs border border-white/10"
+                >
+                  View CV
+                </button>
+                <a
+                  href="/Bandi_Praneeth_Resume.pdf"
+                  download="Bandi_Praneeth_Resume.pdf"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>PDF</span>
+                </a>
+              </div>
             </div>
           </div>
         )}

@@ -1,160 +1,187 @@
 import React from 'react';
-import { Compass, GraduationCap, Cpu, Layers, Sparkles, Target, Award, ArrowUpRight } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { Compass, GraduationCap, Award, CheckCircle2, ArrowRight, User, Terminal } from 'lucide-react';
+import { PERSONAL_INFO, ACHIEVEMENTS } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
+import { PageId } from './Navbar';
 
-export const About: React.FC = () => {
+interface AboutProps {
+  onNavigate?: (page: PageId) => void;
+}
+
+export const About: React.FC<AboutProps> = ({ onNavigate }) => {
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-6 border-b border-white/10">
+    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-in fade-in duration-300">
+      {/* Page Title */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">
-            <Compass className="w-4 h-4" />
-            <span>01 // Editorial Profile</span>
+            <User className="w-4 h-4" />
+            <span>Profile &amp; Background</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            About Me &amp; Philosophy
-          </h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+            About Bandi Praneeth
+          </h1>
         </div>
         <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-          Bridging the gap between mathematical machine learning research and enterprise cloud resilience.
+          Academic foundation, practical engineering mindset, and leadership achievements.
         </p>
       </div>
 
-      {/* Asymmetric Editorial Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Personal Story & Philosophy (7 cols) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Left Column: Summary & Objective (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          {/* Main Story Card */}
-          <div className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-colors pointer-events-none" />
-            <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-4 flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-cyan-400" />
-              The AI &amp; Cloud Intersection
-            </h3>
-            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              <p>
-                I am a 3rd-year B.Tech undergraduate specializing in <strong className="text-white font-medium">Artificial Intelligence &amp; Machine Learning</strong> at Vasireddy Venkatadri Institute of Technology. My engineering drive originates from a simple principle: <span className="text-cyan-300 italic">an AI model is only as valuable as its reliability when placed in production</span>.
-              </p>
-              <p>
-                My background combines deep algorithmic experimentation—from convolutional neural networks with <strong className="text-white font-medium">Explainable AI (Grad-CAM)</strong> for medical image classification to multi-agent LLM tool routing—with battle-tested cloud infrastructure on <strong className="text-white font-medium">AWS</strong>.
-              </p>
-              <p>
-                Having earned the <strong className="text-amber-300 font-medium">AWS Certified Cloud Practitioner</strong> accreditation and completed three internships across full-stack development (Gloom Dev), cloud infrastructure (APSSDC), and AI agents (Swecha / IIIT Hyderabad), I love building systems that are not just theoretically sound, but blazingly fast, serverless, and intuitive for everyday end users.
-              </p>
-            </div>
-          </div>
+          {/* Professional Summary */}
+          <div className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden">
+            <h2 className="text-xl sm:text-2xl font-display font-bold text-white mb-4 flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
+              Professional Summary
+            </h2>
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-light">
+              "{PERSONAL_INFO.summary}"
+            </p>
 
-          {/* Core Values / Philosophy Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-all">
-              <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 w-fit mb-3">
-                <Target className="w-5 h-5" />
-              </div>
-              <h4 className="font-display font-semibold text-white text-base mb-1.5">
-                First-Principles Engineering
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Rather than treating models as black boxes, I delve into gradient dynamics, layer activations, and data distributions to understand why systems behave the way they do.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-purple-500/30 transition-all">
-              <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 w-fit mb-3">
-                <Layers className="w-5 h-5" />
-              </div>
-              <h4 className="font-display font-semibold text-white text-base mb-1.5">
-                Production-First Mindset
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Designing every service with least-privilege IAM policies, automated monitoring via CloudWatch, modular REST architectures, and containerized scalability.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Academic Milestones & Currently Exploring (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Academic Background Card */}
-          <div className="p-6 rounded-3xl glass-panel relative overflow-hidden">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2.5 text-white font-display font-bold text-lg">
-                <GraduationCap className="w-5 h-5 text-cyan-400" />
-                <span>Academic Record</span>
-              </div>
-              <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded-full border border-cyan-800/40">
-                2023 – 2027
-              </span>
-            </div>
-
-            <div className="space-y-4">
+            <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h5 className="font-semibold text-white text-sm">
-                      {PERSONAL_INFO.education.degree}
-                    </h5>
-                    <p className="text-xs text-slate-400 mt-0.5">
-                      {PERSONAL_INFO.education.institution}
-                    </p>
-                  </div>
-                  <span className="text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 px-2 py-1 rounded">
-                    {PERSONAL_INFO.education.grade}
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-500 mt-2 font-mono">
-                  {PERSONAL_INFO.education.location}
+                <span className="text-xs font-mono text-cyan-400 block font-semibold mb-1">
+                  Core Approach
+                </span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Focusing on hands-on practical implementation, continuous learning, and adapting to modern software and cloud technologies.
                 </p>
               </div>
 
-              {/* Previous High Grades */}
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                  <div className="text-[11px] text-slate-400">Intermediate (MPC)</div>
-                  <div className="font-semibold text-white mt-0.5">90.40%</div>
-                  <div className="text-[10px] text-slate-500 truncate mt-1">Sasi Jr Kalasala</div>
-                </div>
-                <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                  <div className="text-[11px] text-slate-400">Secondary (SSC)</div>
-                  <div className="font-semibold text-white mt-0.5">90.30%</div>
-                  <div className="text-[10px] text-slate-500 truncate mt-1">ZPH Boys High School</div>
-                </div>
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                <span className="text-xs font-mono text-purple-400 block font-semibold mb-1">
+                  Cloud &amp; Development
+                </span>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Experience in AWS cloud services, responsive React interfaces, and DevOps practices with Linux and automation.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Currently Exploring Radar Card */}
-          <div className="p-6 rounded-3xl glass-panel relative overflow-hidden">
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-2">
-              <Sparkles className="w-4 h-4" />
-              <span>Current Technical Frontier</span>
-            </div>
-            <h3 className="text-lg font-display font-bold text-white mb-4">
-              Currently Exploring &amp; Prototyping
+          {/* Key Achievements from Resume */}
+          <div className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden space-y-4">
+            <h3 className="text-lg font-display font-bold text-white flex items-center gap-2">
+              <Award className="w-5 h-5 text-amber-400" />
+              <span>Recognitions &amp; Milestones</span>
             </h3>
 
-            <div className="space-y-2.5">
-              {PERSONAL_INFO.currentlyExploring.map((item, idx) => (
+            <div className="space-y-3">
+              {ACHIEVEMENTS.map((item, idx) => (
                 <div
                   key={idx}
-                  onMouseEnter={() => soundManager.playHover()}
-                  className="p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.06] border border-white/5 hover:border-cyan-500/30 transition-all flex items-start justify-between group"
+                  className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-start gap-3 hover:border-cyan-500/30 transition-colors"
                 >
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                      {item.name}
+                    <div className="text-xs font-semibold text-white">
+                      {item.title}
                     </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5 pl-3">
-                      {item.desc}
+                    <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                      {item.description}
                     </div>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 mt-0.5" />
                 </div>
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Right Column: Education & Fast Navigation (5 cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          {/* Education Breakdown */}
+          <div className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden space-y-5">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2 text-white font-display font-bold text-lg">
+                <GraduationCap className="w-5 h-5 text-cyan-400" />
+                <span>Education</span>
+              </div>
+              <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded-full border border-cyan-800/40">
+                Verified Records
+              </span>
+            </div>
+
+            {/* B.Tech */}
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
+              <div className="flex justify-between items-start">
+                <h4 className="font-semibold text-white text-sm">
+                  {PERSONAL_INFO.education.degree}
+                </h4>
+                <span className="text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">
+                  {PERSONAL_INFO.education.grade}
+                </span>
+              </div>
+              <div className="text-xs text-slate-300">
+                {PERSONAL_INFO.education.institution}
+              </div>
+              <div className="text-[11px] font-mono text-slate-400 pt-1">
+                {PERSONAL_INFO.education.period} | {PERSONAL_INFO.education.location}
+              </div>
+            </div>
+
+            {/* Intermediate */}
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1">
+              <div className="flex justify-between items-start">
+                <h4 className="font-semibold text-white text-xs">
+                  Intermediate
+                </h4>
+                <span className="text-xs font-mono font-bold text-white bg-white/5 px-2 py-0.5 rounded">
+                  {PERSONAL_INFO.intermediate.grade}
+                </span>
+              </div>
+              <div className="text-xs text-slate-400">
+                {PERSONAL_INFO.intermediate.institution}
+              </div>
+              <div className="text-[11px] font-mono text-slate-500">
+                {PERSONAL_INFO.intermediate.period}
+              </div>
+            </div>
+
+            {/* SSC */}
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1">
+              <div className="flex justify-between items-start">
+                <h4 className="font-semibold text-white text-xs">
+                  Secondary School (SSC)
+                </h4>
+                <span className="text-xs font-mono font-bold text-white bg-white/5 px-2 py-0.5 rounded">
+                  {PERSONAL_INFO.secondary.grade}
+                </span>
+              </div>
+              <div className="text-xs text-slate-400">
+                {PERSONAL_INFO.secondary.institution}
+              </div>
+              <div className="text-[11px] font-mono text-slate-500">
+                {PERSONAL_INFO.secondary.period}
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Action Card */}
+          {onNavigate && (
+            <div className="p-6 rounded-3xl bg-gradient-to-br from-cyan-950/40 via-blue-950/20 to-transparent border border-cyan-500/30 flex flex-col justify-between space-y-4">
+              <div>
+                <h4 className="font-display font-bold text-white text-base">
+                  Explore Verified Projects
+                </h4>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  View Rythu Nestham, Trust Chit, and Cardiovascular Risk Classification projects.
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  soundManager.playClick();
+                  onNavigate('projects');
+                }}
+                className="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-500/20"
+              >
+                <span>Navigate to Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

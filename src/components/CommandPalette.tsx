@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, FolderGit2, Briefcase, Award, Wrench, Sparkles, FileText, Mail, Volume2, VolumeX, Moon, Sun, ArrowRight, X } from 'lucide-react';
+import { Search, FolderGit2, Briefcase, Award, Wrench, FileText, Mail, Volume2, VolumeX, Moon, Sun, ArrowRight, X, Home, User } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 import { useToast } from './Toast';
+import { PageId } from './Navbar';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface CommandPaletteProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigate: (page: PageId) => void;
   onOpenResume: () => void;
   isDarkMode: boolean;
   setIsDarkMode: (val: boolean) => void;
@@ -16,6 +19,7 @@ interface CommandPaletteProps {
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
   isOpen,
   onClose,
+  onNavigate,
   onOpenResume,
   isDarkMode,
   setIsDarkMode,
@@ -29,51 +33,95 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   const commands = [
     {
-      id: 'sec-projects',
-      category: 'Navigation',
-      label: 'Explore Projects & Case Studies',
-      icon: FolderGit2,
-      action: () => scrollToSection('projects'),
+      id: 'page-home',
+      category: 'Pages',
+      label: 'Home Page',
+      icon: Home,
+      action: () => {
+        onClose();
+        onNavigate('home');
+      },
     },
     {
-      id: 'sec-research',
-      category: 'Navigation',
-      label: 'Research Lab & AI Notebooks',
-      icon: Sparkles,
-      action: () => scrollToSection('research'),
+      id: 'page-about',
+      category: 'Pages',
+      label: 'About Bandi Praneeth',
+      icon: User,
+      action: () => {
+        onClose();
+        onNavigate('about');
+      },
     },
     {
-      id: 'sec-experience',
-      category: 'Navigation',
-      label: 'Internships & Experience Timeline',
-      icon: Briefcase,
-      action: () => scrollToSection('experience'),
-    },
-    {
-      id: 'sec-skills',
-      category: 'Navigation',
-      label: 'Technical Skill Constellation',
+      id: 'page-skills',
+      category: 'Pages',
+      label: 'Technical Skills Matrix',
       icon: Wrench,
-      action: () => scrollToSection('skills'),
+      action: () => {
+        onClose();
+        onNavigate('skills');
+      },
     },
     {
-      id: 'sec-certifications',
-      category: 'Navigation',
-      label: 'AWS & Industry Certifications',
+      id: 'page-projects',
+      category: 'Pages',
+      label: 'Projects (Rythu Nestham, Trust Chit, Cardio AI)',
+      icon: FolderGit2,
+      action: () => {
+        onClose();
+        onNavigate('projects');
+      },
+    },
+    {
+      id: 'page-experience',
+      category: 'Pages',
+      label: 'Internships (Gloom Dev & APSSDC)',
+      icon: Briefcase,
+      action: () => {
+        onClose();
+        onNavigate('experience');
+      },
+    },
+    {
+      id: 'page-certifications',
+      category: 'Pages',
+      label: 'Certifications & Achievements (AWS, NPTEL, etc.)',
       icon: Award,
-      action: () => scrollToSection('certifications'),
+      action: () => {
+        onClose();
+        onNavigate('certifications');
+      },
     },
     {
-      id: 'sec-contact',
-      category: 'Navigation',
+      id: 'page-contact',
+      category: 'Pages',
       label: 'Contact Bandi Praneeth',
       icon: Mail,
-      action: () => scrollToSection('contact'),
+      action: () => {
+        onClose();
+        onNavigate('contact');
+      },
     },
     {
-      id: 'act-resume',
-      category: 'Actions',
-      label: 'View & Download Official Resume (PDF)',
+      id: 'act-download-resume',
+      category: 'Resume',
+      label: 'Download Official Resume PDF',
+      icon: FileText,
+      action: () => {
+        onClose();
+        const link = document.createElement('a');
+        link.href = '/Bandi_Praneeth_Resume.pdf';
+        link.download = 'Bandi_Praneeth_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast('Downloading Bandi_Praneeth_Resume.pdf...');
+      },
+    },
+    {
+      id: 'act-view-resume',
+      category: 'Resume',
+      label: 'Open Resume Viewer Modal',
       icon: FileText,
       action: () => {
         onClose();
@@ -83,10 +131,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'act-copy-email',
       category: 'Actions',
-      label: 'Copy Email (bandipraneeth2005@gmail.com)',
+      label: `Copy Email (${PERSONAL_INFO.contacts.email})`,
       icon: Mail,
       action: () => {
-        navigator.clipboard.writeText('bandipraneeth2005@gmail.com');
+        navigator.clipboard.writeText(PERSONAL_INFO.contacts.email);
         showToast('Email copied to clipboard!');
         onClose();
       },
@@ -120,15 +168,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     cmd.label.toLowerCase().includes(query.toLowerCase()) ||
     cmd.category.toLowerCase().includes(query.toLowerCase())
   );
-
-  const scrollToSection = (id: string) => {
-    onClose();
-    soundManager.playClick();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   useEffect(() => {
     if (isOpen) {
@@ -174,13 +213,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-150">
       <div className="relative w-full max-w-xl rounded-2xl bg-[#0c101d] border border-white/10 shadow-2xl overflow-hidden flex flex-col text-slate-200">
-        {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/10 bg-[#0e1424]">
           <Search className="w-5 h-5 text-cyan-400 shrink-0" />
           <input
             ref={inputRef}
             type="text"
-            placeholder="Type a command or search sections, projects, resume..."
+            placeholder="Type to search pages, projects, resume download..."
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -196,7 +234,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           </button>
         </div>
 
-        {/* Command List */}
         <div className="max-h-80 overflow-y-auto p-2 space-y-1">
           {filteredCommands.length === 0 ? (
             <div className="py-8 text-center text-sm text-slate-500">
@@ -244,14 +281,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
           )}
         </div>
 
-        {/* Footer shortcuts */}
         <div className="px-4 py-2.5 bg-[#0a0d18] border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>ESC Close</span>
           </div>
-          <span>Bandi Praneeth AI OS</span>
+          <span>Bandi Praneeth Portfolio</span>
         </div>
       </div>
     </div>

@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Cpu, Search, Sparkles, Brain, Cloud, Code2, Globe, Database, CheckCircle2 } from 'lucide-react';
+import { Cpu, Search, Brain, Cloud, Code2, Globe, Database, ArrowRight } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
+import { PageId } from './Navbar';
 
-export const Skills: React.FC = () => {
+interface SkillsProps {
+  onNavigate?: (page: PageId) => void;
+}
+
+export const Skills: React.FC<SkillsProps> = ({ onNavigate }) => {
   const [activeCategory, setActiveCategory] = useState<string>(SKILL_CATEGORIES[0].category);
   const [searchQuery, setSearchQuery] = useState('');
 
   const icons: Record<string, React.ElementType> = {
-    Brain,
-    Cloud,
     Code2,
+    Cloud,
     Globe,
     Database,
+    Brain,
   };
 
   const currentCategoryData = SKILL_CATEGORIES.find((c) => c.category === activeCategory) || SKILL_CATEGORIES[0];
 
-  // If user is searching, filter across all categories; otherwise show current category
   const filteredSkills = searchQuery.trim()
     ? SKILL_CATEGORIES.flatMap((c) =>
         c.skills
@@ -31,20 +35,20 @@ export const Skills: React.FC = () => {
     : currentCategoryData.skills.map((s) => ({ ...s, parentCategory: currentCategoryData.category }));
 
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-in fade-in duration-300">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">
             <Cpu className="w-4 h-4" />
-            <span>02 // Core Competencies</span>
+            <span>Technical Skills</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            Technical Skill Ecosystem
-          </h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+            Skill &amp; Competency Matrix
+          </h1>
         </div>
         <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-          Interactive matrix of verified programming languages, neural architectures, cloud services, and developer tooling.
+          Languages, cloud services, web technologies, and developer tooling verified from resume experience.
         </p>
       </div>
 
@@ -53,7 +57,7 @@ export const Skills: React.FC = () => {
         {/* Category Pills */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
           {SKILL_CATEGORIES.map((cat) => {
-            const Icon = icons[cat.iconName] || Brain;
+            const Icon = icons[cat.iconName] || Code2;
             const isActive = !searchQuery.trim() && activeCategory === cat.category;
             return (
               <button
@@ -88,7 +92,7 @@ export const Skills: React.FC = () => {
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search skills (e.g. AWS, PyTorch)..."
+            placeholder="Search skills (e.g. AWS, React, Python)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-4 py-2 rounded-xl bg-white/[0.03] border border-white/10 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
@@ -105,7 +109,7 @@ export const Skills: React.FC = () => {
       </div>
 
       {/* Skills Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {filteredSkills.length === 0 ? (
           <div className="col-span-full py-16 text-center text-slate-500 text-sm">
             No technical skills matching "{searchQuery}".
@@ -117,7 +121,6 @@ export const Skills: React.FC = () => {
               onMouseEnter={() => soundManager.playHover()}
               className="p-5 rounded-2xl glass-panel glass-panel-hover flex flex-col justify-between group relative overflow-hidden"
             >
-              {/* Top Row: Name & Level */}
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div>
@@ -140,7 +143,6 @@ export const Skills: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Circular / Meter Gauge Value */}
                   <div className="text-right shrink-0">
                     <span className="font-mono font-extrabold text-sm text-cyan-400">
                       {skill.level}%
@@ -148,7 +150,6 @@ export const Skills: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Micro Animated Progress Line */}
                 <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden my-3">
                   <div
                     className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full transition-all duration-700 ease-out group-hover:shadow-[0_0_8px_rgba(56,189,248,0.7)]"
@@ -157,7 +158,6 @@ export const Skills: React.FC = () => {
                 </div>
               </div>
 
-              {/* Tags / Sub-competencies */}
               <div className="flex flex-wrap gap-1.5 pt-2">
                 {skill.tags.map((tag) => (
                   <span
@@ -171,31 +171,6 @@ export const Skills: React.FC = () => {
             </div>
           ))
         )}
-      </div>
-
-      {/* Skill Ecosystem Callout */}
-      <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-cyan-950/30 via-indigo-950/20 to-purple-950/30 border border-cyan-500/20 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 shrink-0">
-            <Sparkles className="w-6 h-6" />
-          </div>
-          <div>
-            <h4 className="font-display font-bold text-white text-base">
-              Continuous Upskilling &amp; Industry Alignment
-            </h4>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Every skill listed above has been deployed across actual production codebases, college hackathons, or verified certification proctoring.
-            </p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <span className="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3 py-1.5 rounded-lg border border-cyan-800/40">
-            AWS Certified CLF-C02
-          </span>
-          <span className="text-xs font-mono text-purple-300 bg-purple-950/80 px-3 py-1.5 rounded-lg border border-purple-800/40">
-            600+ Solved
-          </span>
-        </div>
       </div>
     </section>
   );

@@ -1,134 +1,99 @@
-import { Project, Experience, SkillCategory, Certification, ResearchExperiment } from '../types/portfolio';
+import { Project, Experience, SkillCategory, Certification } from '../types/portfolio';
 
 export const PERSONAL_INFO = {
   name: "Bandi Praneeth",
-  title: "AI & Machine Learning Engineer | Cloud Architect",
-  tagline: "Building Intelligence. Creating Possibilities.",
-  bio: "An AI & Machine Learning enthusiast exploring intelligent systems, generative AI, deep learning, and cloud technologies to build solutions that matter.",
-  editorialBio: "A 3rd-year B.Tech undergraduate in Artificial Intelligence & Machine Learning at Vasireddy Venkatadri Institute of Technology. Experienced across cloud architecture (AWS Certified Cloud Practitioner), full-stack microservices (FastAPI, React), and autonomous AI agent workflows (developed during internship at Swecha / IIIT Hyderabad). Passionate about turning algorithmic machine learning research into highly reliable, production-ready cloud systems.",
+  title: "Software Engineer | Cloud & Full Stack Developer",
+  tagline: "Engineering Scalable Systems. Creating Possibilities.",
+  summary: "Motivated to apply academic knowledge and practical experience to solve real-world challenges. Eager to contribute to organizational success while continuously learning, growing, and adapting to new opportunities.",
   education: {
-    degree: "B.Tech in Artificial Intelligence & Machine Learning",
-    institution: "Vasireddy Venkatadri Institute of Technology (VVIT)",
-    period: "2023 – 2027 (Expected)",
+    degree: "B.Tech, Computer Science & Engineering (AI & ML)",
+    institution: "Vasireddy Venkatadri Institute of Technology",
+    period: "2023 – Present",
     location: "Guntur, Andhra Pradesh, India",
-    grade: "7.3 SGPA",
-    coursework: [
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Deep Learning & CNNs",
-      "Natural Language Processing",
-      "Cloud Computing & AWS",
-      "Data Structures & Algorithms",
-      "Object-Oriented Programming (Java/Python)",
-      "Database Management Systems (MySQL/MongoDB)"
-    ]
+    grade: "70%"
   },
   intermediate: {
     institution: "Sasi Jr Kalasala",
-    stream: "MPC (Mathematics, Physics, Chemistry)",
     period: "2021 – 2023",
-    grade: "90.40%"
+    grade: "90%"
   },
   secondary: {
     institution: "Z.P.H Boys High School",
     period: "2020 – 2021",
-    grade: "90.30%"
+    grade: "84%"
   },
   contacts: {
-    email: "bandipraneeth2005@gmail.com",
-    altEmail: "praneethb523@gmail.com",
+    email: "praneethb523@gmail.com",
     phone: "+91 7095570399",
-    location: "Tanuku / Guntur, Andhra Pradesh, India",
+    location: "Andhra Pradesh, India",
     github: "https://github.com/PraneethBandi05",
     githubUsername: "PraneethBandi05",
     linkedin: "https://linkedin.com/in/praneethbandi",
-    portfolioUrl: "https://praneethbandi.dev",
-    availability: "Available for Internships & Full-time Engineering Roles"
+    resumePdfUrl: "/Bandi_Praneeth_Resume.pdf"
   },
   roles: [
-    "AI/ML Engineer",
-    "Machine Learning Developer",
-    "Cloud & DevOps Architect",
-    "Generative AI Explorer",
-    "Full-Stack Systems Engineer"
-  ],
-  currentlyExploring: [
-    { name: "Generative AI & LLMs", desc: "Fine-tuning, prompt optimization, RAG pipelines" },
-    { name: "Autonomous AI Agents", desc: "Multi-agent swarm coordination and tool calling" },
-    { name: "Explainable AI (XAI)", desc: "Grad-CAM, SHAP, and interpretability in computer vision" },
-    { name: "Serverless Cloud Architectures", desc: "AWS Lambda, EventBridge, DynamoDB at scale" },
-    { name: "Vector Databases & Search", desc: "Embeddings, semantic retrieval, hybrid search" }
+    "Software Engineer",
+    "Full Stack Developer",
+    "Cloud & DevOps Enthusiast",
+    "AI & Intelligent Systems Explorer",
+    "Algorithmic Problem Solver"
   ],
   stats: [
-    { label: "Coding Problems Solved", value: "600+", desc: "Solved on CodeChef, HackerRank & LeetCode" },
-    { label: "Cloud Certification", value: "AWS CLF-C02", desc: "Certified AWS Cloud Practitioner" },
-    { label: "Hackathon Victory", value: "1st Place", desc: "ACM Student Chapter Hackathon Champion" },
-    { label: "Industry Internships", value: "3 Roles", desc: "Gloom Dev, APSSDC & Swecha (IIIT-H)" }
+    { label: "Coding Problems Solved", value: "600+", desc: "Solved 600+ CodeChef problems" },
+    { label: "AWS Certified", value: "CLF-C02", desc: "AWS Certified Cloud Practitioner" },
+    { label: "Hackathon Victory", value: "1st Place", desc: "ACM Student Chapter Hackathon" },
+    { label: "Industry Internships", value: "2 Roles", desc: "Gloom Dev & APSSDC" }
   ]
 };
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    category: "AI & Machine Learning",
-    description: "Core architectures, neural networks, predictive modeling, and generative workflows",
-    iconName: "Brain",
+    category: "Programming Languages",
+    description: "Core languages for application logic and algorithmic problem solving",
+    iconName: "Code2",
     skills: [
-      { name: "Machine Learning", level: 92, experience: "2+ yrs", tags: ["Scikit-learn", "Regression", "Classification", "Clustering"], highlight: "Core Focus" },
-      { name: "Deep Learning & CNNs", level: 88, experience: "2 yrs", tags: ["PyTorch", "TensorFlow", "Keras", "ResNet"], highlight: "Fundus AI Project" },
-      { name: "Generative AI & Agents", level: 86, experience: "1 yr", tags: ["LangChain", "Prompt Engineering", "Tool Use"], highlight: "Swecha IIIT-H" },
-      { name: "Natural Language Processing", level: 84, experience: "1.5 yrs", tags: ["NLTK", "Transformers", "Tokenization"], highlight: "ATS Score Checker" },
-      { name: "Explainable AI (XAI)", level: 82, experience: "1 yr", tags: ["Grad-CAM", "Saliency Maps", "Interpretability"], highlight: "Medical Vision" },
-      { name: "Data Preprocessing & EDA", level: 90, experience: "2+ yrs", tags: ["Pandas", "NumPy", "Matplotlib", "Seaborn"], highlight: "APSSDC Certified" }
+      { name: "Python", level: 92, experience: "Proficient", tags: ["Python 3", "OOP", "APIs", "Data Structures"], highlight: "NPTEL Certified" },
+      { name: "Java", level: 86, experience: "Proficient", tags: ["Core Java", "OOP", "Data Structures"], highlight: "Academic Core" },
+      { name: "C", level: 84, experience: "Foundational", tags: ["Pointers", "Algorithms", "Memory Basics"], highlight: "Foundational" }
     ]
   },
   {
     category: "Cloud & DevOps",
-    description: "Enterprise AWS cloud infrastructure, automation, containerization, and security",
+    description: "Cloud infrastructure, Linux environments, containers, and provisioning",
     iconName: "Cloud",
     skills: [
-      { name: "AWS Cloud (CLF-C02)", level: 90, experience: "Certified", tags: ["EC2", "S3", "IAM", "VPC", "Route 53"], highlight: "AWS Certified" },
-      { name: "AWS Serverless & Compute", level: 88, experience: "1.5 yrs", tags: ["Lambda", "CloudWatch", "ELB", "Auto Scaling"], highlight: "APSSDC & Gloom Dev" },
-      { name: "DevOps & Infrastructure", level: 82, experience: "1 yr", tags: ["Docker", "Terraform", "CI/CD Concepts"], highlight: "Infrastructure as Code" },
-      { name: "Cloud Networking & Security", level: 85, experience: "1 yr", tags: ["VPC Subnets", "Security Groups", "Least Privilege"], highlight: "AWS Architecture" },
-      { name: "Git & Collaborative Workflows", level: 92, experience: "3 yrs", tags: ["Git", "GitHub Actions", "Branching Strategies"], highlight: "Open Source" },
-      { name: "Linux Administration", level: 85, experience: "2 yrs", tags: ["Red Hat Enterprise Linux", "Kali Linux", "Bash"], highlight: "RedHat Workshop" }
+      { name: "AWS Cloud", level: 90, experience: "Certified", tags: ["EC2", "S3", "IAM", "VPC", "Lambda", "CloudWatch"], highlight: "AWS Certified (CLF-C02)" },
+      { name: "Linux", level: 86, experience: "Hands-on", tags: ["Red Hat", "Shell", "Administration"], highlight: "APSSDC" },
+      { name: "Docker", level: 82, experience: "Hands-on", tags: ["Containers", "Images", "Deployment"], highlight: "DevOps" },
+      { name: "Terraform", level: 80, experience: "Hands-on", tags: ["IaC", "Cloud Provisioning"], highlight: "Infrastructure as Code" }
     ]
   },
   {
-    category: "Programming Languages",
-    description: "Systems programming, algorithmic problem solving, scripting, and application logic",
-    iconName: "Code2",
-    skills: [
-      { name: "Python", level: 95, experience: "3+ yrs", tags: ["Advanced OOP", "AsyncIO", "NumPy", "FastAPI"], highlight: "Primary Language" },
-      { name: "Java", level: 85, experience: "2 yrs", tags: ["Core Java", "OOP", "JDBC", "Data Structures"], highlight: "ATM System" },
-      { name: "SQL", level: 90, experience: "2.5 yrs", tags: ["Complex Queries", "Indexing", "Optimization", "Joins"], highlight: "Wipro TalentNext" },
-      { name: "Dart", level: 88, experience: "1.5 yrs", tags: ["Flutter State", "Async/Await", "Null Safety"], highlight: "Rythu Nestham" },
-      { name: "C Programming", level: 84, experience: "2 yrs", tags: ["Pointers", "Memory Management", "Algorithms"], highlight: "Foundational" },
-      { name: "JavaScript / TypeScript", level: 86, experience: "2 yrs", tags: ["ES6+", "Async", "TypeScript Types"], highlight: "Full Stack" }
-    ]
-  },
-  {
-    category: "Web & Full Stack",
-    description: "Responsive frontend interfaces and high-throughput REST API backends",
+    category: "Web Technologies",
+    description: "Modern, responsive frontend development and interactive user interfaces",
     iconName: "Globe",
     skills: [
-      { name: "React.js", level: 88, experience: "2 yrs", tags: ["Hooks", "State Management", "Tailwind CSS", "Vite"], highlight: "Gloom Dev Intern" },
-      { name: "FastAPI", level: 90, experience: "1.5 yrs", tags: ["Pydantic", "Async Endpoints", "OpenAPI Docs"], highlight: "Production REST" },
-      { name: "Node.js & Express", level: 80, experience: "1 yr", tags: ["REST APIs", "Middleware", "Authentication"], highlight: "Trust Chit" },
-      { name: "HTML5 & CSS3 / Modern UI", level: 92, experience: "3 yrs", tags: ["Responsive Design", "Flexbox/Grid", "Tailwind"], highlight: "freeCodeCamp Certified" },
-      { name: "UI/UX & Prototyping", level: 82, experience: "1.5 yrs", tags: ["Figma", "Design Systems", "HCI Principles"], highlight: "NPTEL Certified" }
+      { name: "HTML", level: 92, experience: "Proficient", tags: ["HTML5", "Semantic Markup", "Accessibility"], highlight: "freeCodeCamp Certified" },
+      { name: "CSS", level: 90, experience: "Proficient", tags: ["CSS3", "Responsive Layouts", "Flexbox/Grid"], highlight: "freeCodeCamp Certified" },
+      { name: "React", level: 88, experience: "Hands-on", tags: ["Components", "Hooks", "Responsive UI"], highlight: "Gloom Dev Intern" }
     ]
   },
   {
-    category: "Databases & Tools",
-    description: "Relational, NoSQL, and graph databases with workflow orchestration",
+    category: "Databases",
+    description: "Relational and graph database architectures",
     iconName: "Database",
     skills: [
-      { name: "MongoDB", level: 86, experience: "1.5 yrs", tags: ["Aggregation", "Mongoose", "NoSQL Modeling"], highlight: "Gloom Dev" },
-      { name: "MySQL & SQLite", level: 90, experience: "2.5 yrs", tags: ["Relational Schema", "Transactions", "Triggers"], highlight: "Trust Chit / ATM" },
-      { name: "Neo4j", level: 75, experience: "6 mos", tags: ["Graph Databases", "Cypher Query Language"], highlight: "Graph Analysis" },
-      { name: "Workflow Automation (n8n)", level: 84, experience: "1 yr", tags: ["Webhooks", "API Integrations", "Automation"], highlight: "Productivity" },
-      { name: "IDEs & Environments", level: 94, experience: "3 yrs", tags: ["VS Code", "Jupyter", "Google Colab", "Workbench"], highlight: "Daily Stack" }
+      { name: "MySQL", level: 88, experience: "Proficient", tags: ["Relational Schema", "Queries", "Joins"], highlight: "Wipro TalentNext" },
+      { name: "Neo4j", level: 78, experience: "Hands-on", tags: ["Graph Database", "Cypher Queries"], highlight: "Graph Data" }
+    ]
+  },
+  {
+    category: "Tools & Platforms",
+    description: "Version control, workflow orchestration, and development platforms",
+    iconName: "Brain",
+    skills: [
+      { name: "Git & GitHub", level: 92, experience: "Proficient", tags: ["Version Control", "Collaboration", "Branches"], highlight: "Daily Workflow" },
+      { name: "n8n", level: 82, experience: "Hands-on", tags: ["Workflow Automation", "Integrations", "Webhooks"], highlight: "Automation" }
     ]
   }
 ];
@@ -137,217 +102,106 @@ export const PROJECTS: Project[] = [
   {
     id: "rythu-nestham",
     title: "Rythu Nestham — Smart Crop Advisory Application",
-    subtitle: "Cross-platform mobile & web agricultural intelligence platform tailored for farming decision support",
+    subtitle: "Mobile application providing crop-related guidance based on user inputs, focusing on usability and responsiveness",
     category: "Mobile & Systems",
     featured: true,
-    problem: "Smallholder farmers frequently experience crop losses due to unpredicted weather shifts, inappropriate crop selection for specific soil types, and lack of localized agronomic guidance in native terminology.",
-    solution: "Architected a dual-platform (Flutter mobile application + web interface) advisory suite. Integrates real-time microclimate APIs with rule-based soil compatibility inference algorithms to recommend high-yield crop varieties, optimal sowing schedules, and fertilizer guidelines.",
-    techStack: ["Flutter", "Dart", "REST APIs", "OpenWeather API", "SQLite", "Firebase"],
+    problem: "Farmers require simplified, localized access to crop guidance and agricultural information to make informed decisions.",
+    solution: "Designed a user-friendly interface using Flutter to make agricultural information and crop guidance easily accessible to farmers. Implemented application logic for processing user-provided agricultural information and generating relevant crop guidance.",
+    techStack: ["Flutter", "Dart", "REST APIs", "Mobile UI"],
     keyFeatures: [
-      "Dynamic agronomic recommendations based on soil texture, pH, and historical regional rainfall",
-      "Offline-first local cache using SQLite for farmers in areas with intermittent cellular connectivity",
-      "Multi-lingual interface designed according to Human-Computer Interaction (HCI) usability principles",
-      "Showcased at College Project Expo and lauded for practical social impact"
+      "Designed a user-friendly interface to make agricultural information and crop guidance easily accessible to farmers",
+      "Implemented application logic for processing user-provided agricultural information and generating relevant crop guidance",
+      "Focused on developing a practical smart farming solution that can support farmers in making informed crop-related decisions",
+      "Responsive cross-platform mobile user interface"
     ],
-    metrics: "Demonstrated at Technical Expo • Multi-platform support • Offline caching",
+    metrics: "Practical smart farming solution • Flutter & Dart",
     githubUrl: "https://github.com/PraneethBandi05",
     architectureHighlights: [
-      "Modular Flutter BLoC architecture for reactive state management",
-      "RESTful API connector with automatic exponential backoff",
-      "Local SQLite persistent store for offline crop catalog retrieval"
+      "Modular Flutter widget tree for responsive mobile experience",
+      "Dynamic agricultural logic processing soil and crop parameters",
+      "User-friendly navigation tailored for rural accessibility"
     ],
-    badge: "Featured Mobile & AgriTech"
+    badge: "Resume Project • Mobile App"
+  },
+  {
+    id: "trust-chit",
+    title: "Trust Chit — Chit Fund Management System",
+    subtitle: "Digital chit fund management system to manage member details, monthly contributions, and chit-fund records",
+    category: "Cloud & Full Stack",
+    featured: true,
+    problem: "Managing chit-fund records, auctions, and member contributions manually leads to errors and lack of transparent tracking.",
+    solution: "Developed a digital chit fund management system to manage member details, monthly contributions, and chit-fund records efficiently. Implemented functionality for managing members, payment records, auctions, and transactions. Designed database-driven modules and deployed on AWS cloud.",
+    techStack: ["React", "SQLite", "Node.js", "AWS Cloud"],
+    keyFeatures: [
+      "Developed a digital chit fund management system to manage member details, monthly contributions, and chit-fund records efficiently",
+      "Implemented functionality for managing members, payment records, auctions, and transactions",
+      "Designed database-driven modules to maintain and retrieve chit-fund data accurately",
+      "Deployed the application on AWS cloud infrastructure for hosting and accessibility"
+    ],
+    metrics: "Deployed on AWS Cloud • Full Stack System",
+    githubUrl: "https://github.com/PraneethBandi05",
+    architectureHighlights: [
+      "React interactive frontend with real-time record viewing",
+      "Database-driven module using SQLite for reliable ledger management",
+      "Hosted and accessible via AWS cloud infrastructure"
+    ],
+    badge: "Resume Project • Full Stack & AWS"
   },
   {
     id: "fundus-cardio-risk",
     title: "Cardiovascular Risk Classification via Retinal Fundus AI",
-    subtitle: "Deep learning diagnostic pipeline utilizing Convolutional Neural Networks and Grad-CAM explainability",
+    subtitle: "Deep learning diagnostic system using retinal fundus images, CNN architectures, and Explainable AI (Grad-CAM)",
     category: "AI & Deep Learning",
-    featured: true,
-    problem: "Traditional cardiovascular screening requires invasive blood tests or expensive vascular imaging. Retinal microvasculature directly mirrors systemic circulatory health, but manual ophthalmological inspection is labor-intensive and subjective.",
-    solution: "Trained deep Convolutional Neural Networks (ResNet/DenseNet) on retinal fundus imagery to predict cardiovascular risk indicators. Implemented Gradient-weighted Class Activation Mapping (Grad-CAM) to render interpretability heatmaps highlighting critical arteriolar narrowing for clinicians.",
+    featured: false,
+    problem: "Non-invasive, early detection of cardiovascular risk indicators through retinal microvasculature inspection requires specialized clinical expertise.",
+    solution: "Trained deep Convolutional Neural Networks (ResNet/DenseNet) on retinal fundus imagery to classify cardiovascular risk indicators. Implemented Gradient-weighted Class Activation Mapping (Grad-CAM) to generate visual saliency maps highlighting critical arteriolar patterns.",
     techStack: ["Python", "PyTorch", "OpenCV", "Grad-CAM", "CNN (ResNet)", "Scikit-learn"],
     keyFeatures: [
-      "End-to-end computer vision preprocessing: contrast-limited adaptive histogram equalization (CLAHE) & vessel segmentation",
-      "Explainable AI (XAI) heatmaps providing visual audit trails for high-risk predictions",
-      "Rigorous evaluation: ROC-AUC analysis, precision-recall curve validation, and cross-validation",
-      "Published research notebook with modular inference scripts for clinical experimentation"
+      "End-to-end computer vision pipeline for retinal fundus image preprocessing and contrast enhancement",
+      "Explainable AI (Grad-CAM) visual heatmaps for model interpretability",
+      "Deep Convolutional Neural Network architecture evaluation (Precision, Recall, ROC-AUC)",
+      "Non-invasive diagnostic experimentation prototype"
     ],
-    metrics: "High sensitivity • Explainable AI visual heatmaps • Clinical research prototype",
+    metrics: "Deep Learning • Grad-CAM Explainable AI",
     githubUrl: "https://github.com/PraneethBandi05",
     architectureHighlights: [
-      "Dual-stage CLAHE microvascular enhancement pipeline",
-      "Fine-tuned CNN backbone with custom dense classification head",
-      "Hook-based Grad-CAM activation extractor with alpha-channel saliency overlay"
+      "Retinal fundus preprocessing and vessel enhancement",
+      "CNN classification backbone fine-tuned for vascular indicators",
+      "Grad-CAM hook extracting visual explanation heatmaps"
     ],
-    badge: "Medical AI & Explainable AI"
-  },
-  {
-    id: "trust-chit",
-    title: "Trust Chit — Chit Fund Financial Management Platform",
-    subtitle: "Enterprise-grade financial ledger, member auction engine, and monthly contribution tracking system",
-    category: "Cloud & Full Stack",
-    featured: true,
-    problem: "Traditional community chit funds and rotational savings groups rely heavily on manual paper registers, resulting in calculation errors, delayed auction auditing, and lack of real-time member transparency.",
-    solution: "Engineered a full-stack digital chit fund management ecosystem with role-based member portals, automated dividend calculations, auction bidding records, and relational transaction ledgers deployed on AWS cloud.",
-    techStack: ["React.js", "Node.js", "Express", "SQLite", "MongoDB", "AWS Cloud"],
-    keyFeatures: [
-      "Automated monthly contribution schedules and dynamic dividend distribution calculations",
-      "Secure member auction log tracking with historical bid archives",
-      "Database-driven modular schema ensuring acid compliance across monetary transactions",
-      "Deployed on AWS cloud infrastructure for maximum uptime and secure data storage"
-    ],
-    metrics: "Production-ready • AWS Hosted • Complete ledger transparency",
-    githubUrl: "https://github.com/PraneethBandi05",
-    architectureHighlights: [
-      "Component-driven React UI with real-time auction status updates",
-      "Express REST API with JWT-based session security",
-      "AWS S3 + EC2 automated deployment pipeline"
-    ],
-    badge: "FinTech & Cloud"
-  },
-  {
-    id: "serverless-ats",
-    title: "Serverless ATS Resume Intelligence & Score Checker",
-    subtitle: "Cloud-native NLP parsing pipeline computing semantic alignment between applicant resumes and job specs",
-    category: "Cloud & Full Stack",
-    featured: false,
-    problem: "Job applicants often receive automated rejection emails without actionable insight into why their resumes failed automated applicant tracking systems.",
-    solution: "Built a serverless cloud engine powered by AWS Lambda and FastAPI that ingests PDF resumes, extracts semantic entities via NLP, and computes cosine similarity against target job descriptions with keyword gap recommendations.",
-    techStack: ["AWS Lambda", "FastAPI", "Python", "Amazon S3", "NLP", "Docker"],
-    keyFeatures: [
-      "Zero-server architecture scaling to zero cost when idle on AWS Lambda",
-      "Semantic keyword extraction identifying missing critical technical competencies",
-      "Sub-second document parsing with structured JSON diagnostic report generation",
-      "Integrated with secure S3 pre-signed upload URLs"
-    ],
-    metrics: "Sub-second inference • 100% Serverless on AWS • Actionable feedback",
-    githubUrl: "https://github.com/PraneethBandi05",
-    architectureHighlights: [
-      "AWS Lambda container image packaged via Docker",
-      "Pre-signed S3 URL generation for direct document uploading",
-      "FastAPI serverless handler integration via Mangum"
-    ],
-    badge: "Serverless & NLP"
-  },
-  {
-    id: "website-monitor",
-    title: "Cloud Infrastructure & Website Health Sentinel",
-    subtitle: "Distributed multi-region ping and synthetic latency monitor with CloudWatch alarm automation",
-    category: "Cloud & Full Stack",
-    featured: false,
-    problem: "Web services experience regional routing degradation and micro-outages that standard single-region monitors fail to detect.",
-    solution: "Developed an AWS serverless monitoring sentinel invoking scheduled Lambda functions that test endpoints from multiple regions, stream latency metrics to Amazon CloudWatch, and alert operators via Amazon SNS.",
-    techStack: ["AWS Lambda", "Amazon CloudWatch", "Amazon SNS", "MySQL", "Terraform", "Python"],
-    keyFeatures: [
-      "Scheduled EventBridge cron triggers firing lightweight health probes every 60 seconds",
-      "Dynamic threshold evaluation dispatching urgent SMS/email notifications on response anomalies",
-      "Historical uptime ledger stored in relational MySQL database",
-      "Terraform IaC scripts for reproducible infrastructure provisioning"
-    ],
-    metrics: "99.9% monitor uptime • Automated alerts • Multi-region telemetry",
-    githubUrl: "https://github.com/PraneethBandi05",
-    architectureHighlights: [
-      "Terraform-managed AWS Lambda and EventBridge rules",
-      "CloudWatch custom metric alarms linked to SNS topics",
-      "Connection-pooled MySQL driver for efficient ephemeral executions"
-    ],
-    badge: "DevOps & SRE"
-  },
-  {
-    id: "product-price-predictor",
-    title: "Multi-Modal Product Price & Category Prediction Platform",
-    subtitle: "Dual-stream deep neural network fusing visual product embeddings with structured metadata",
-    category: "AI & Deep Learning",
-    featured: false,
-    problem: "E-commerce retailers struggle to price second-hand and newly listed inventory without assessing both visual aesthetic condition and technical specifications.",
-    solution: "Constructed a multi-modal neural network in PyTorch that combines a pretrained ResNet visual backbone with dense numerical feature branches to predict fair market valuation and auto-categorize catalog entries.",
-    techStack: ["PyTorch", "Python", "ResNet-50", "FastAPI", "Pandas", "Scikit-learn"],
-    keyFeatures: [
-      "Multi-modal fusion layer concatenating image embeddings with dense tabular representations",
-      "High correlation with real-world market values across diverse product classes",
-      "FastAPI endpoint serving predictions under 85ms for interactive buyer/seller tools"
-    ],
-    metrics: "Under 85ms latency • Dual-modal vision+tabular architecture",
-    githubUrl: "https://github.com/PraneethBandi05",
-    architectureHighlights: [
-      "Feature fusion combining 512-dim visual embeddings with scaled tabular vectors",
-      "FastAPI microservice optimized with PyTorch TorchScript JIT compilation"
-    ],
-    badge: "Computer Vision & Regressor"
+    badge: "Cardiovascular AI Project"
   }
 ];
 
 export const EXPERIENCES: Experience[] = [
   {
     id: "gloom-dev",
-    role: "Cloud & Full Stack Development Intern",
-    company: "Gloom Dev Pvt. Ltd.",
+    role: "Cloud & Full Stack Intern",
+    company: "Gloom Dev Pvt Ltd",
     location: "Remote",
-    duration: "4 Months",
-    period: "08/2026 – 11/2026",
+    duration: "Ongoing",
+    period: "08/2026 – Present",
     type: "Internship",
     description: [
-      "Gained hands-on exposure to enterprise AWS Cloud architecture and cloud deployment strategies through practical development sprints.",
-      "Engineered responsive and interactive frontend interfaces utilizing React.js, Tailwind CSS, and component design patterns.",
-      "Developed high-throughput backend services and RESTful APIs using FastAPI and Python, streamlining cross-service communication.",
-      "Integrated MongoDB database collections for flexible JSON data storage, indexing, and high-concurrency read/write operations.",
-      "Maintained professional Git & GitHub version control, collaborative code reviews, and automated integration workflows."
+      "Developed web applications focusing on responsive design and user-friendly interfaces.",
+      "Worked with AWS cloud services, backend development, and application deployment to understand real-world development processes."
     ],
-    technologies: ["AWS Cloud", "React.js", "FastAPI", "MongoDB", "Python", "Git", "REST APIs"],
+    technologies: ["React", "AWS Cloud", "Backend Development", "Responsive Design", "Web Applications"],
     verified: true
   },
   {
     id: "apssdc-devops",
-    role: "AWS Cloud Computing & DevOps Intern",
+    role: "DevOps Intern",
     company: "Andhra Pradesh State Skill Development Corporation (APSSDC)",
     location: "Remote",
     duration: "3 Months",
     period: "05/2026 – 07/2026",
     type: "Internship",
     description: [
-      "Deepened practical expertise in AWS Cloud architecture, focusing on high availability, auto-scaling, fault tolerance, and security foundations.",
-      "Provisioned and managed Amazon EC2 virtual servers, configured security groups, key pairs, and elastic block storage volumes.",
-      "Implemented AWS IAM least-privilege policies, managed cross-account roles, access keys, and compliance audits.",
-      "Orchestrated Amazon S3 storage buckets, lifecycle management rules, CORS policies, and static website hosting architectures.",
-      "Engineered Amazon VPC network topologies including public/private subnets, custom route tables, Internet Gateways, and NAT Gateways.",
-      "Implemented serverless workflows with AWS Lambda and configured Amazon CloudWatch metrics, alarms, and log analysis."
+      "Gained hands-on experience in AWS cloud services, Linux, and DevOps practices for managing cloud infrastructure.",
+      "Worked with deployment, version control, and automation tools to understand application development and delivery processes."
     ],
-    technologies: ["AWS (EC2, S3, IAM, VPC, Lambda)", "CloudWatch", "Linux", "DevOps", "Networking"],
-    verified: true
-  },
-  {
-    id: "swecha-ai",
-    role: "AI Agent Development Intern",
-    company: "Swecha Telangana (in collaboration with IIIT Hyderabad)",
-    location: "Virtual / Hyderabad",
-    duration: "28 Days Intensive",
-    period: "08/2025",
-    type: "Internship",
-    description: [
-      "Collaborated in a high-intensity research sprint with IIIT Hyderabad mentors building and testing autonomous AI agents for task automation.",
-      "Conceptualized conversational workflows and multi-step reasoning chains for specialized domain applications.",
-      "Mastered Advanced Python programming paradigms, prompt engineering strategies, model fine-tuning techniques, and deployment pipelines.",
-      "Contributed to open-source Telugu language datasets and linguistic AI models as part of distributed community research initiatives."
-    ],
-    technologies: ["AI Agents", "Prompt Engineering", "Advanced Python", "Fine-Tuning", "LLMs", "Git"],
-    verified: true
-  },
-  {
-    id: "sac-leadership",
-    role: "Student Activity Council (SAC) Lead & Hackathon Winner",
-    company: "Vasireddy Venkatadri Institute of Technology (VVIT)",
-    location: "Guntur, India",
-    duration: "Ongoing",
-    period: "2023 – Present",
-    type: "Leadership",
-    description: [
-      "Led the college Student Activity Council (SAC), orchestrating technical hackathons, coding workshops, and inter-collegiate technical symposiums.",
-      "Secured 1st Place in the competitive ACM Student Chapter Hackathon with an innovative software engineering solution.",
-      "Selected as an active Member of the IUCEE (Indo-Universal Collaboration for Engineering Education) R&D Department.",
-      "Represented VVIT at the prestigious Smart India Hackathon (SIH) 2024 presenting AI-driven technical solutions."
-    ],
-    technologies: ["Team Leadership", "Event Coordination", "Competitive Programming", "Public Speaking"],
+    technologies: ["AWS Cloud", "Linux", "DevOps", "Version Control", "Automation", "Deployment"],
     verified: true
   }
 ];
@@ -357,238 +211,109 @@ export const CERTIFICATIONS: Certification[] = [
     id: "aws-clf-c02",
     title: "AWS Certified Cloud Practitioner (CLF-C02)",
     issuer: "Amazon Web Services (AWS)",
-    issueDate: "2026",
+    issueDate: "Verified",
     category: "Cloud",
-    skillsLearned: ["AWS Cloud Architecture", "Security & Compliance", "Cloud Economics", "Core AWS Services"],
+    skillsLearned: ["AWS Cloud Concepts", "Security & Compliance", "Cloud Infrastructure", "Core Services"],
     badgeColor: "from-amber-500/20 to-orange-500/10"
+  },
+  {
+    id: "hci-nptel",
+    title: "Human Computer Interaction",
+    issuer: "NPTEL",
+    issueDate: "Verified",
+    category: "Web & Mobile",
+    skillsLearned: ["User Interface Principles", "User Experience Design", "Interaction Modeling"],
+    badgeColor: "from-purple-500/20 to-pink-500/10"
+  },
+  {
+    id: "fcc-web-design",
+    title: "Responsive Web Design",
+    issuer: "freeCodeCamp",
+    issueDate: "Verified",
+    category: "Web & Mobile",
+    skillsLearned: ["HTML5", "CSS3", "Responsive Layouts", "Web Standards"],
+    badgeColor: "from-emerald-500/20 to-teal-500/10"
   },
   {
     id: "salesforce-agentforce",
     title: "Salesforce Certified Agentforce Specialist",
     issuer: "Salesforce",
-    issueDate: "2026",
-    category: "AI & Python",
-    skillsLearned: ["Autonomous AI Agents", "Workflow Triggers", "Agent Architecture", "Enterprise AI"],
+    issueDate: "Verified",
+    category: "Cloud",
+    skillsLearned: ["Agentforce Architecture", "Workflow Automations", "Cloud Systems"],
     badgeColor: "from-blue-500/20 to-cyan-500/10"
   },
   {
-    id: "nptel-joy-python",
+    id: "python-nptel",
     title: "The Joy of Computing using Python",
-    issuer: "NPTEL (National Programme on Technology Enhanced Learning)",
-    issueDate: "2025",
-    category: "AI & Python",
-    skillsLearned: ["Algorithmic Thinking", "Advanced Python", "Computational Problem Solving", "Data Structures"],
-    badgeColor: "from-yellow-500/20 to-emerald-500/10"
-  },
-  {
-    id: "nptel-hci",
-    title: "Human-Computer Interaction (HCI)",
     issuer: "NPTEL",
-    issueDate: "2025",
-    category: "Web & Mobile",
-    skillsLearned: ["UI/UX Principles", "User-Centered Design", "Interaction Modeling", "Heuristic Evaluation"],
-    badgeColor: "from-purple-500/20 to-pink-500/10"
-  },
-  {
-    id: "fcc-web-design",
-    title: "Responsive Web Design Certification",
-    issuer: "freeCodeCamp",
-    issueDate: "2024",
-    category: "Web & Mobile",
-    skillsLearned: ["HTML5", "CSS3 Flexbox & Grid", "Accessibility", "Responsive Breakpoints"],
-    badgeColor: "from-emerald-500/20 to-teal-500/10"
-  },
-  {
-    id: "hackerrank-sql",
-    title: "SQL Advanced Problem Solving",
-    issuer: "HackerRank",
-    issueDate: "2025",
-    category: "Data & DB",
-    skillsLearned: ["Subqueries", "Window Functions", "Join Optimizations", "Relational Database Design"],
-    badgeColor: "from-emerald-500/20 to-cyan-500/10"
-  },
-  {
-    id: "wipro-talentnext",
-    title: "Wipro TalentNext DSE Certification",
-    issuer: "Wipro TalentNext Program",
-    issueDate: "2025",
-    category: "Data & DB",
-    skillsLearned: ["Database Engineering", "Structured Query Language", "Data Normalization"],
-    badgeColor: "from-indigo-500/20 to-purple-500/10"
-  },
-  {
-    id: "udemy-flutter",
-    title: "The Complete Flutter Development Bootcamp with Dart",
-    issuer: "Udemy",
-    issueDate: "2025",
-    category: "Web & Mobile",
-    skillsLearned: ["Cross-Platform Mobile", "Dart OOP", "BLoC State Management", "Firebase Integration"],
-    badgeColor: "from-cyan-500/20 to-blue-500/10"
-  },
-  {
-    id: "udemy-python-100",
-    title: "100 Days of Code: Complete Python Pro",
-    issuer: "Udemy",
-    issueDate: "2025",
+    issueDate: "Verified",
     category: "AI & Python",
-    skillsLearned: ["Full Stack Python", "Web Scraping", "Tkinter GUI", "Automation & APIs"],
-    badgeColor: "from-blue-500/20 to-indigo-500/10"
-  },
-  {
-    id: "apssdc-data-analysis",
-    title: "Data Analysis using Python",
-    issuer: "APSSDC",
-    issueDate: "2024",
-    category: "AI & Python",
-    skillsLearned: ["Pandas", "NumPy", "Statistical Analysis", "Data Visualization"],
-    badgeColor: "from-sky-500/20 to-blue-500/10"
-  },
-  {
-    id: "letsupgrade-figma",
-    title: "Figma UI/UX Design Specialization",
-    issuer: "LetsUpgrade",
-    issueDate: "2024",
-    category: "Web & Mobile",
-    skillsLearned: ["Figma Wireframing", "Component Variants", "Interactive Prototypes"],
-    badgeColor: "from-rose-500/20 to-orange-500/10"
+    skillsLearned: ["Python Programming", "Computational Thinking", "Data Structures"],
+    badgeColor: "from-yellow-500/20 to-emerald-500/10"
   }
 ];
 
-export const RESEARCH_EXPERIMENTS: ResearchExperiment[] = [
+export const ACHIEVEMENTS = [
   {
-    id: "exp-01",
-    code: "EXP_VISION_01",
-    title: "Retinal Microvasculature Saliency via Grad-CAM for Non-Invasive Cardiovascular Risk Stratification",
-    abstract: "Investigating the correlation between retinal arteriolar-to-venular ratio (AVR) and cardiovascular risk metrics using Deep Convolutional Neural Networks. We implement Gradient-weighted Class Activation Mapping to provide clinicians with interpretable visual validation of high-risk vascular zones.",
-    focusArea: "Computer Vision & Explainable AI (XAI)",
-    architecture: "Preprocessed CLAHE -> ResNet-50 / DenseNet-121 Backbone -> Custom Attention Pooling -> Multi-head Regressor",
-    dataset: "High-resolution fundus images (DRIVE & STARE datasets augmented with spatial transformations)",
-    metrics: [
-      { label: "ROC-AUC Score", value: "0.942" },
-      { label: "Precision", value: "91.8%" },
-      { label: "Inference Latency", value: "48ms" },
-      { label: "Saliency Alignment", value: "96.4%" }
-    ],
-    keyFindings: [
-      "CLAHE contrast enhancement prior to feature extraction boosted microvascular edge detection by 23%",
-      "Grad-CAM visual maps demonstrated that the network accurately focused on arteriolar tortuosity and caliber changes rather than optic disc artifacts",
-      "Model achieved robust generalizability across diverse retinal pigmentation variants"
-    ],
-    futureDirections: "Integrating temporal fundus sequence comparison to track vascular remodeling over multi-year clinical timelines.",
-    status: "Completed"
+    title: "600+ Coding Problems Solved",
+    description: "Solved 600+ CodeChef problems, improving problem-solving and algorithmic skills.",
+    badge: "Problem Solving",
+    highlight: "CodeChef"
   },
   {
-    id: "exp-02",
-    code: "EXP_AGENT_02",
-    title: "Constrained-Context Tool-Calling Optimization in Autonomous Multi-Agent Swarms",
-    abstract: "Explored during the Swecha Telangana / IIIT Hyderabad internship. Investigating latency and hallucination reductions in multi-turn conversational agents by designing compact schema payloads and deterministic fallback state machines.",
-    focusArea: "Generative AI & Agentic Systems",
-    architecture: "Dynamic Router -> Intent Classifier -> Schema-Constrained Tool Invoker -> Verification Loop",
-    dataset: "Synthetic evaluation corpus of 1,200 multi-step API invocation commands with noisy parameters",
-    metrics: [
-      { label: "Tool Call Accuracy", value: "97.3%" },
-      { label: "Token Consumption", value: "-34%" },
-      { label: "Mean TTFT", value: "280ms" },
-      { label: "Zero-Shot Recovery", value: "89.1%" }
-    ],
-    keyFindings: [
-      "Pruning redundant JSON-schema descriptions lowered token overhead by 34% without sacrificing parameter precision",
-      "Introducing a lightweight deterministic intermediate validator reduced API runtime execution errors by 82%"
-    ],
-    futureDirections: "Deploying local quantized SLMs (Small Language Models) for ultra-low latency edge tool routing on embedded IoT devices.",
-    status: "Published"
+    title: "ACM Student Chapter Hackathon",
+    description: "Secured first place by developing and presenting an innovative technical solution in a competitive hackathon.",
+    badge: "1st Place Winner",
+    highlight: "Hackathon Champion"
   },
   {
-    id: "exp-03",
-    code: "EXP_AGRI_03",
-    title: "Multivariate Microclimate & Soil Feature Fusion for Precision Yield Estimation",
-    abstract: "Developing empirical predictive algorithms that combine localized sensor data (soil N-P-K, pH, moisture) with satellite weather projections to assist rural farmers in semi-arid zones. Built as the theoretical backing for Rythu Nestham.",
-    focusArea: "Predictive Modeling & Agronomy AI",
-    architecture: "XGBoost Regressor + Multi-Layer Perceptron (MLP) Ensemble with Bayesian Hyperparameter Optimization",
-    dataset: "Empirical agricultural data spanning 5 seasons across Andhra Pradesh agrarian districts",
-    metrics: [
-      { label: "RMSE Error", value: "0.082" },
-      { label: "R² Coefficient", value: "0.914" },
-      { label: "Feature Importance", value: "Soil Moisture (38%)" }
-    ],
-    keyFindings: [
-      "Rainfall volatility within the first 14 days of sowing was identified as the predominant yield variance factor",
-      "Ensemble stacking outperformed standalone Random Forest models by 14% on extreme weather outliers"
-    ],
-    futureDirections: "Embedding hyperspectral drone imagery to correlate micro-nutrient deficiencies with canopy reflectance.",
-    status: "Completed"
+    title: "Student Leadership",
+    description: "Led the Student Activity Council, coordinating student activities and contributing to effective team and event management.",
+    badge: "Leadership",
+    highlight: "Student Activity Council"
   },
   {
-    id: "exp-04",
-    code: "EXP_CLOUD_04",
-    title: "High-Concurrency Serverless Document Embedding Pipeline on AWS Lambda",
-    abstract: "Benchmarking cold-start mitigation techniques and memory allocation trade-offs when executing lightweight sentence transformers within containerized AWS Lambda environments.",
-    focusArea: "Cloud Systems & Serverless Engineering",
-    architecture: "API Gateway -> Lambda Container (Python 3.11 + ONNX Runtime) -> Elasticache / Redis Vector Store",
-    dataset: "Standardized resume and job description benchmarks (10,000 PDF documents)",
-    metrics: [
-      { label: "Cold Start Latency", value: "410ms" },
-      { label: "Warm Execution", value: "24ms" },
-      { label: "Cost per 10k Docs", value: "$0.04" }
-    ],
-    keyFindings: [
-      "Utilizing ONNX Runtime instead of raw PyTorch reduced the container image footprint by 78% and decreased cold-start latency by 62%",
-      "Memory right-sizing to 1769 MB (1 vCPU equivalent) yielded the optimum cost-to-performance frontier"
-    ],
-    futureDirections: "Implementing streaming response tokens over HTTP/2 directly from Lambda response streams.",
-    status: "In Progress"
+    title: "IUCEE Member",
+    description: "Selected as a Member of the IUCEE R&D Department.",
+    badge: "R&D Member",
+    highlight: "IUCEE"
+  },
+  {
+    title: "Wipro TalentNext DSE Training",
+    description: "Completed Wipro TalentNext DSE Program training with a focus on SQL and database management.",
+    badge: "Certified Training",
+    highlight: "Wipro TalentNext"
   }
 ];
-
-export const CODING_STATS = {
-  totalSolved: "600+",
-  platforms: [
-    { name: "CodeChef", count: "400+ Problems", badge: "Algorithmic Solver", color: "text-amber-400" },
-    { name: "HackerRank", count: "5-Star SQL & Python", badge: "Certified", color: "text-emerald-400" },
-    { name: "LeetCode", count: "150+ Problems", badge: "Data Structures", color: "text-cyan-400" }
-  ],
-  languagesRatio: [
-    { name: "Python", percentage: 42, color: "bg-blue-500" },
-    { name: "TypeScript / JS", percentage: 24, color: "bg-amber-400" },
-    { name: "Dart / Flutter", percentage: 16, color: "bg-cyan-400" },
-    { name: "Java", percentage: 11, color: "bg-orange-500" },
-    { name: "C & SQL", percentage: 7, color: "bg-emerald-500" }
-  ],
-  contributions: {
-    year: "2025-2026",
-    totalCommits: "1,240+",
-    activeRepositories: "18+",
-    pullRequestsMerged: "45+"
-  }
-};
 
 export const AI_KNOWLEDGE_BASE = [
   {
-    keywords: ["who", "about", "bio", "praneeth", "introduce", "background"],
-    answer: "Bandi Praneeth is an AI & Machine Learning student at Vasireddy Venkatadri Institute of Technology (VVIT) (2023–2027) with an aggregate 7.3 SGPA. He is an AWS Certified Cloud Practitioner (CLF-C02) who has completed 3 internships: Cloud & Full Stack at Gloom Dev, AWS Cloud Computing at APSSDC, and AI Agent Development at Swecha (with IIIT Hyderabad). He has solved 600+ coding challenges and won 1st place in the ACM Student Chapter Hackathon."
+    keywords: ["who", "about", "bio", "praneeth", "summary", "introduce"],
+    answer: "Bandi Praneeth is an engineering student at Vasireddy Venkatadri Institute of Technology (2023–Present, 70%). He is an AWS Certified Cloud Practitioner (CLF-C02) with internships at Gloom Dev Pvt Ltd (Cloud & Full Stack) and APSSDC (DevOps). He has solved 600+ coding problems on CodeChef, won 1st place in the ACM Student Chapter Hackathon, and served as Student Activity Council leader."
   },
   {
-    keywords: ["skills", "technologies", "tech stack", "languages", "proficiencies", "know"],
-    answer: "Praneeth's primary skills include:\n• Languages: Python (Advanced), Java, C, SQL, Dart, JavaScript/TypeScript.\n• AI & ML: Deep Learning (CNNs, PyTorch, TensorFlow), Generative AI, Explainable AI (Grad-CAM), NLP, Scikit-learn.\n• Cloud & DevOps: AWS (EC2, S3, IAM, VPC, Lambda, CloudWatch, Route 53), Docker, Terraform, Git/GitHub, Linux (Red Hat, Kali).\n• Web & Mobile: React.js, FastAPI, Node.js, Flutter, MongoDB, MySQL, SQLite."
+    keywords: ["skills", "technologies", "tech stack", "languages"],
+    answer: "Praneeth's technical skills directly from his resume:\n• Programming Languages: Python, Java, C\n• Cloud & DevOps: AWS, Linux, Docker, Terraform\n• Databases: MySQL, Neo4j\n• Tools & Platforms: Git, GitHub, n8n\n• Web Technologies: HTML, CSS, React"
   },
   {
-    keywords: ["projects", "built", "portfolio work", "rythu", "fundus", "trust chit"],
-    answer: "Praneeth has built several impressive real-world projects:\n1. Rythu Nestham: Smart Crop Advisory mobile app in Flutter with offline SQLite support and weather API guidance.\n2. Fundus Cardio Risk AI: Deep learning CNN with Grad-CAM explainability analyzing retinal fundus images.\n3. Trust Chit: Full-stack Chit Fund Financial Management system in React, Node.js, SQLite/MongoDB deployed on AWS.\n4. Serverless ATS Score Checker: AWS Lambda + FastAPI resume analyzer evaluating candidate keyword fit.\n5. Website Monitoring System: AWS Lambda and Aurora-based website monitoring solution.\n6. Product Price Predictor: PyTorch multi-modal image + metadata pricing model."
+    keywords: ["projects", "built", "work", "rythu", "trust chit", "cardiovascular", "fundus"],
+    answer: "Praneeth's projects:\n1. Rythu Nestham: Smart Crop Advisory Application in Flutter, helping farmers make informed decisions.\n2. Trust Chit: Chit Fund Management System built with React, SQLite, Node.js, and deployed on AWS cloud.\n3. Cardiovascular Risk Classification: Deep learning project analyzing retinal fundus images with CNNs and Grad-CAM explainability."
   },
   {
-    keywords: ["aws", "cloud", "certification", "clf-c02", "devops", "apssdc"],
-    answer: "Praneeth is an officially certified AWS Cloud Practitioner (CLF-C02). During his internship at APSSDC, he gained hands-on expertise with EC2 instances, S3 bucket storage & hosting, IAM least privilege policies, VPC custom networking, and Lambda serverless architectures. At Gloom Dev, he deployed full-stack React and FastAPI microservices into AWS."
+    keywords: ["internship", "experience", "gloom dev", "apssdc"],
+    answer: "Praneeth's internships:\n• Cloud & Full Stack Intern at Gloom Dev Pvt Ltd (08/2026–Present): Developing responsive web applications and working with AWS cloud services and backend deployment.\n• DevOps Intern at APSSDC (05/2026–07/2026): Hands-on AWS cloud services, Linux, and DevOps practices for cloud infrastructure and automation."
   },
   {
-    keywords: ["swecha", "iiit", "agent", "agents", "internship", "experience"],
-    answer: "Praneeth completed a 28-day AI Agent Development internship at Swecha Telangana in collaboration with IIIT Hyderabad. There, he built and tested autonomous AI agents, conceptualized conversational reasoning workflows, practiced prompt engineering and fine-tuning, and gained hands-on experience in open-source AI."
+    keywords: ["certifications", "certified", "aws", "salesforce", "nptel"],
+    answer: "Certifications:\n1. AWS Certified Cloud Practitioner (CLF-C02) – Amazon Web Services\n2. Human Computer Interaction – NPTEL\n3. Responsive Web Design – freeCodeCamp\n4. Salesforce Certified Agentforce Specialist – Salesforce\n5. The Joy of Computing using Python – NPTEL"
   },
   {
-    keywords: ["contact", "hire", "email", "reach", "phone", "linkedin", "github", "call"],
-    answer: "You can reach Bandi Praneeth directly:\n• Primary Email: bandipraneeth2005@gmail.com\n• Alternative Email: praneethb523@gmail.com\n• Phone: +91 7095570399\n• GitHub: https://github.com/PraneethBandi05\n• LinkedIn: https://linkedin.com/in/praneethbandi\n• Location: Tanuku / Guntur, Andhra Pradesh, India (Available for remote and relocation)."
+    keywords: ["achievements", "hackathon", "codechef", "problems", "iucee", "wipro"],
+    answer: "Key Achievements:\n• Solved 600+ CodeChef problems\n• 1st Place Winner at the ACM Student Chapter Hackathon\n• Led the Student Activity Council (SAC)\n• Selected Member of IUCEE R&D Department\n• Completed Wipro TalentNext DSE Program training"
   },
   {
-    keywords: ["hackathon", "achievements", "codechef", "problems", "sac", "awards"],
-    answer: "Praneeth's key achievements include:\n• 1st Place Winner at the ACM Student Chapter Hackathon.\n• 600+ algorithmic problems solved on CodeChef, HackerRank & LeetCode.\n• AWS Certified Cloud Practitioner (CLF-C02).\n• Salesforce Certified Agentforce Specialist.\n• Executive Member / Lead of the Student Activity Council (SAC) at VVIT.\n• Selected Member of the IUCEE R&D Department.\n• Smart India Hackathon (SIH) 2024 AI Participant."
+    keywords: ["contact", "email", "phone", "reach", "hire"],
+    answer: "Contact Bandi Praneeth:\n• Email: praneethb523@gmail.com\n• Phone: +91 7095570399\n• GitHub: https://github.com/PraneethBandi05\n• Resume: You can download the official resume PDF directly from the top bar or contact section."
   }
 ];

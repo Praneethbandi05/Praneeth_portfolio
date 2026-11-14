@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Copy, Check, Send, Sparkles, FileText, ArrowRight } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { Mail, Phone, MapPin, Copy, Check, Send, Download, FileText, ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { fireSuccessConfetti } from '../utils/confetti';
 import { useToast } from './Toast';
+import { GithubIcon, LinkedinIcon } from './Icons';
 
 interface ContactProps {
-  onOpenResume: () => void;
+  onOpenResume?: () => void;
 }
 
 export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
@@ -19,15 +19,14 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: 'Internship Opportunity',
+    subject: 'General Technical Inquiry',
     message: '',
   });
 
   const subjects = [
-    'Internship Opportunity',
-    'Full-Time Engineering Role',
-    'AI / ML Collaboration',
-    'Cloud / DevOps Project',
+    'Job / Internship Opportunity',
+    'Full Stack / Cloud Project',
+    'Technical Collaboration',
     'General Technical Inquiry',
   ];
 
@@ -35,7 +34,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
     soundManager.playClick();
     navigator.clipboard.writeText(PERSONAL_INFO.contacts.email);
     setCopiedEmail(true);
-    showToast('Email copied to clipboard: bandipraneeth2005@gmail.com');
+    showToast(`Email copied: ${PERSONAL_INFO.contacts.email}`);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
@@ -53,49 +52,48 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
       setIsSubmitting(false);
       setSubmitted(true);
       fireSuccessConfetti();
-      showToast('Message sent successfully! Praneeth will respond promptly.');
+      showToast('Message sent! Praneeth will respond promptly.');
       setFormData({
         name: '',
         email: '',
-        subject: 'Internship Opportunity',
+        subject: 'General Technical Inquiry',
         message: '',
       });
     }, 1200);
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-in fade-in duration-300">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16 pb-6 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">
             <Mail className="w-4 h-4" />
-            <span>09 // Initiate Connection</span>
+            <span>Get In Touch</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            Have an interesting problem to solve?
-          </h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
+            Connect with Bandi Praneeth
+          </h1>
         </div>
         <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-          Open for technical internships, full-time AI/ML &amp; Cloud engineering opportunities, and research inquiries.
+          Reach out for software opportunities, full-stack &amp; cloud projects, or technical collaboration.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Direct Info & Social Cards (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Quick Connect Card */}
           <div className="p-6 sm:p-8 rounded-3xl glass-panel border border-white/10 space-y-6">
-            <h3 className="font-display font-bold text-xl text-white">
-              Direct Contact Channels
-            </h3>
+            <h2 className="font-display font-bold text-xl text-white">
+              Direct Contact Details
+            </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-              Feel free to send a direct message, initiate an inquiry via email, or download my verified resume.
+              Feel free to send a direct message, reach out via email, or download my official resume PDF.
             </p>
 
             {/* Email Card with 1-Click Copy */}
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
-              <div className="text-[11px] font-mono text-slate-400">Primary Email</div>
+              <div className="text-[11px] font-mono text-slate-400">Email Address</div>
               <div className="flex items-center justify-between gap-2">
                 <a
                   href={`mailto:${PERSONAL_INFO.contacts.email}`}
@@ -129,7 +127,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   <MapPin className="w-3.5 h-3.5 text-purple-400" /> Location
                 </div>
                 <div className="font-semibold text-white">
-                  Tanuku / Guntur, AP
+                  {PERSONAL_INFO.contacts.location}
                 </div>
               </div>
             </div>
@@ -157,17 +155,16 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
               </a>
             </div>
 
-            {/* Resume Trigger */}
-            <button
-              onClick={() => {
-                soundManager.playPulse();
-                onOpenResume();
-              }}
-              className="w-full p-4 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 border border-cyan-500/40 text-cyan-300 flex items-center justify-center gap-2 font-medium text-xs sm:text-sm transition-all shadow-sm"
+            {/* Resume Direct Download Button */}
+            <a
+              href="/Bandi_Praneeth_Resume.pdf"
+              download="Bandi_Praneeth_Resume.pdf"
+              onClick={() => soundManager.playPulse()}
+              className="w-full p-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 flex items-center justify-center gap-2 font-bold text-xs sm:text-sm transition-all shadow-lg shadow-cyan-500/20"
             >
-              <FileText className="w-4 h-4" />
-              <span>Inspect &amp; Download Verified CV (PDF)</span>
-            </button>
+              <Download className="w-4 h-4" />
+              <span>Download Official Resume PDF</span>
+            </a>
           </div>
         </div>
 
@@ -180,7 +177,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   <Check className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-display font-bold text-white">
-                  Message Dispatched!
+                  Message Sent!
                 </h3>
                 <p className="text-slate-400 text-sm max-w-md mx-auto">
                   Thank you for reaching out. I have received your message and will get back to you shortly.
@@ -202,7 +199,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Dr. Jane Smith"
+                      placeholder="e.g. Alex Johnson"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
@@ -216,7 +213,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                     <input
                       type="email"
                       required
-                      placeholder="jane@company.com"
+                      placeholder="alex@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
@@ -253,7 +250,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   <textarea
                     required
                     rows={4}
-                    placeholder="Describe your project, internship opening, or collaboration..."
+                    placeholder="Describe your project, role, or inquiry..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
@@ -269,11 +266,11 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
-                      Encrypting &amp; Dispatching...
+                      Sending Message...
                     </span>
                   ) : (
                     <>
-                      <span>Transmit Message</span>
+                      <span>Send Message</span>
                       <Send className="w-4 h-4" />
                     </>
                   )}
