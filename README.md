@@ -1,126 +1,161 @@
-# Bandi Praneeth — Premium AI & ML Engineer Portfolio
+# Bandi Praneeth — Personal Developer Portfolio
 
-A futuristic, highly interactive, and responsive personal portfolio website designed for **Bandi Praneeth**, specializing in **Artificial Intelligence, Machine Learning, and Cloud Systems Architecture**.
+Welcome! This repository contains the source code for my personal developer portfolio website. I built this project to showcase my engineering journey, hands-on projects, cloud and DevOps experience, competitive coding milestones, and research work in a clean, modern, and interactive format.
 
-Built strictly according to world-class UI/UX standards, modern AI research laboratory aesthetics, and editorial creative developer designs.
+I am preparing to deploy this live with a custom `.tech` domain (such as `bandipraneeth.tech`).
 
 ---
 
-## 🌟 Highlights & Features
+## 👨‍💻 About Me
 
-- **Hero Experience**:
-  - Immersive headline: *"Building Intelligence. Creating Possibilities."*
-  - Dynamic cycling typewriter role animator (`AI/ML Engineer`, `Machine Learning Developer`, `Generative AI Explorer`, etc.).
-  - **Interactive 60fps Canvas Neural Network**: Floating neurons, dynamic proximity synapses, action potential signal packets, and interactive mouse gravity/repulsion physics.
-  - Live availability badge (`🟢 Available for Opportunities & Collaborations`).
-  - High-impact stats counter cards (`600+ Problems Solved`, `AWS CLF-C02 Certified`, `1st Place ACM Hackathon`, `3 Internship Roles`).
+I am a Computer Science & Engineering undergraduate at **Vasireddy Venkatadri Institute of Technology (VVIT)**, passionate about:
+- **Cloud & DevOps**: AWS (Certified Cloud Practitioner CLF-C02), Linux (Red Hat/APSSDC), Docker, and infrastructure automation.
+- **Full-Stack & Mobile Development**: React, TypeScript, Tailwind CSS, Flutter, Python, and Java.
+- **Problem Solving & Algorithms**: 600+ problems solved on CodeChef and competitive coding platforms.
+- **Applied AI & Medical Imaging**: Deep learning classification using retinal fundus photography and Grad-CAM explainability.
 
-- **Interactive Command Palette (`⌘K` / `Ctrl+K`)**:
-  - Global spotlight-style search across sections, projects, certifications, experiences, and tools.
-  - Direct keyboard triggers to copy email, toggle audio sound, switch theme, or jump to any section.
+---
 
-- **Editorial About & Engineering Philosophy**:
-  - Deep dive into first-principles engineering and production-first deployment philosophies.
-  - Academic background at **Vasireddy Venkatadri Institute of Technology (VVIT)** (B.Tech AI & ML, 7.3 SGPA, Intermediate 90.4%, SSC 90.3%).
-  - "Currently Exploring" radar tags: Generative AI, Large Language Models, Multi-Agent Swarms, Explainable AI (Grad-CAM), and Serverless AWS architectures.
+## ✨ Features & Architecture
 
-- **Interactive Technical Skill Ecosystem**:
-  - Constellation view organized into 5 categories: `AI & Machine Learning`, `Cloud & DevOps`, `Programming Languages`, `Web & Full Stack`, and `Databases & Tools`.
-  - Real-time search filter and proficiency gauges.
-  - Contextual real-world tags for every single competency.
-
-- **Cinematic Projects Showcase**:
-  - Category filters (`All`, `AI & Deep Learning`, `Cloud & Full Stack`, `Mobile & Systems`).
-  - Featured Case Study layout with deep-dive modal for:
-    1. **Rythu Nestham — Smart Crop Advisory Application** (Flutter, Dart, Offline SQLite, Weather APIs).
-    2. **Cardiovascular Risk Classification via Retinal Fundus AI** (PyTorch, ResNet, Grad-CAM XAI).
-    3. **Trust Chit — Chit Fund Financial Management Platform** (React, Node.js, SQLite/MongoDB, AWS).
-    4. **Serverless ATS Resume Score Checker** (AWS Lambda, FastAPI, NLP).
-    5. **Cloud Infrastructure & Website Health Sentinel** (AWS Lambda, CloudWatch, SNS, MySQL, Terraform).
-    6. **Multi-Modal Product Price & Category Predictor** (PyTorch, ResNet, FastAPI).
-
-- **Vertical Animated Work Experience Timeline**:
-  - Verified internship timelines for:
-    - **Gloom Dev Pvt. Ltd.** (Cloud & Full Stack Development Intern)
-    - **APSSDC** (AWS Cloud Computing & DevOps Intern)
-    - **Swecha Telangana in collaboration with IIIT Hyderabad** (AI Agent Development Intern)
-    - **Student Activity Council (SAC) & ACM Hackathon Lead** at VVIT
-
-- **Research & AI Lab Notebook (Distinctive Digital Laboratory)**:
-  - Interactive research notebook cards: `EXP_VISION_01`, `EXP_AGENT_02`, `EXP_AGRI_03`, `EXP_CLOUD_04`.
-  - Architecture pipelines, benchmark datasets, quantitative metrics (ROC-AUC 0.942, Precision 91.8%, Latency 48ms).
-  - **Live Grad-CAM Saliency Simulator**: Interactive toggling of retinal microvasculature heatmaps.
-
-- **Verified Certifications & Accreditations**:
-  - **AWS Certified Cloud Practitioner (CLF-C02)**
-  - **Salesforce Certified Agentforce Specialist**
-  - **NPTEL**: The Joy of Computing using Python & Human-Computer Interaction
-  - **freeCodeCamp**: Responsive Web Design
-  - **HackerRank**: SQL Advanced
-  - **Wipro TalentNext**: DSE Database Engineering
-  - **Udemy**: Flutter & Dart Bootcamp, 100 Days of Python
-
-- **Coding Velocity & GitHub Activity**:
-  - GitHub contribution heatmap matrix for `PraneethBandi05` (1,240+ commits).
-  - Algorithmic problem metrics (600+ solved on CodeChef, HackerRank, LeetCode).
-  - Language distribution ratios.
-
-- **"Ask My Portfolio" AI Assistant**:
-  - Interactive chatbot with realistic typewriter streaming.
-  - Suggested question pills grounded strictly in Praneeth's verified resume data.
-  - Copy response and restart capabilities.
-
-- **Contact & Official Resume Modal**:
-  - Direct 1-click email copy with instant toast confirmation.
-  - Validated inquiry contact form with celebratory confetti bursts (`canvas-confetti`).
-  - Full-screen ATS-compliant Resume Viewer with instant print-to-PDF capabilities.
-
-- **Micro-Interactions & Audio Synthesizer**:
-  - Client-side Web Audio API synthesizer for subtle futuristic sound effects (toggleable and persistent in localStorage).
-  - Custom desktop follower cursor with magnetic hover detection.
+- **Dedicated Page Navigation**: Clean page architecture with routes for:
+  - `Home`: Introduction, headline, quick-jump cards, and profile overview.
+  - `About`: Engineering philosophy, academic background at VVIT, and recognitions.
+  - `Skills Matrix`: Categorized proficiencies across Programming, Cloud/DevOps, Databases, and Tools.
+  - `Projects`: Deep-dive case studies for **Rythu Nestham** (Flutter mobile app), **Trust Chit** (financial management system), and **Cardiovascular Fundus AI** (deep learning vision).
+  - `Experience`: Internship timeline covering roles at **Gloom Dev** and **APSSDC**.
+  - `Certifications`: Accredited certifications from AWS, Salesforce, NPTEL, and freeCodeCamp.
+  - `Research Blog`: In-depth research writeup on Retinal Fundus AI biomarkers and explainable heatmaps.
+  - `Contact`: Interactive inquiry form with celebration confetti and direct contact details.
+- **Alternating Dark & Light Themes**: Dynamic theme transitions between pages with a tech-grid background.
+- **High-Contrast Light Theme**: Custom high-contrast typography, crisp card borders, and clear elevation.
+- **Ambient Mouse Blur Light**: Smooth, GPU-accelerated cursor lighting effect with an enhanced light-mode pointer follower.
+- **Top Taskbar Quick Action**: Dedicated "View Resume" button in the navigation header that directly downloads my latest resume PDF.
+- **Command Palette (`Ctrl + K` / `Cmd + K`)**: Quick keyboard-driven spotlight search to jump across sections, copy contact info, or toggle sound effects.
+- **Centralized Data File**: All personal details, projects, contacts, and credentials live in a single file (`src/data/portfolioData.ts`), making future updates effortless.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend Core**: React 19, TypeScript, Vite
-- **Styling**: Tailwind CSS v4, Glassmorphism, CSS Grid
-- **Motion & Graphics**: HTML5 Canvas (60fps neural network simulation), CSS Keyframes
-- **Icons**: Lucide React & custom vector SVGs
-- **Celebrations**: `canvas-confetti`
-- **Audio**: Web Audio API (zero external assets, client-side synthesized)
+- **Framework**: React 19 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4 + custom responsive utilities
+- **Icons**: Lucide React + custom SVGs
+- **Interactive Effects**: HTML5 Canvas, Web Audio API, Canvas Confetti
 
 ---
 
-## 🚀 Running Locally
+## 🚀 Getting Started Locally
 
-1. **Install dependencies**:
+### Prerequisites
+- Node.js 18 or later
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Praneethbandi05/Praneeth_portfolio.git
+   cd Praneeth_portfolio
+   ```
+
+2. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. **Start the local development server**:
+3. **Start the development server**:
    ```bash
-   npx vite --host 127.0.0.1 --port 5173
+   npm run dev
    ```
-   Open [http://127.0.0.1:5173](http://127.0.0.1:5173) in your browser.
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-3. **Build for production**:
+4. **Build for production**:
    ```bash
    npm run build
    ```
-   The production-optimized bundle is generated in the `dist/` directory.
+   The compiled, optimized production files will be generated in the `dist/` directory.
 
-4. **Preview the production build**:
+5. **Preview the production build locally**:
    ```bash
    npm run preview
    ```
 
 ---
 
-## ⚙️ Centralized Configuration
+## 🌐 Deploying to a Custom `.tech` Domain
 
-All personal information, resume facts, project case studies, certifications, experience logs, and research experiments are managed in a single, strictly-typed configuration file:
-- **`src/data/portfolioData.ts`**
+This portfolio is configured as a static Vite Single-Page Application (SPA) ready to deploy on any modern hosting provider:
 
-To update your email, phone, links, or add new projects, simply edit this file without needing to touch any UI components!
+### Option A: Vercel (Recommended)
+1. Push this repository to GitHub (`Praneethbandi05/Praneeth_portfolio`).
+2. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
+3. Import this repository.
+4. Framework Preset will auto-detect as **Vite**.
+5. Click **Deploy**.
+6. Once deployed, navigate to **Settings > Domains** and enter your custom `.tech` domain (e.g. `yourname.tech`).
+7. Update the DNS records in your domain registrar (Namecheap, GoDaddy, Hostinger, etc.):
+   - **Type**: `CNAME` | **Name**: `@` or `www` | **Value**: `cname.vercel-dns.com`
+
+### Option B: Netlify
+1. Connect the GitHub repo to Netlify.
+2. Build command: `npm run build`
+3. Publish directory: `dist`
+4. Under **Domain Management**, add your custom `.tech` domain and configure the provided DNS records.
+
+### Option C: GitHub Pages
+1. Install `gh-pages` or set up GitHub Actions with the Vite build workflow.
+2. Under **Repository Settings > Pages**, configure your custom domain and add a `CNAME` file pointing to it.
+
+---
+
+## 📁 Project Structure
+
+```text
+Portfolio/
+├── public/                      # Static assets (Resume PDF, profile images)
+│   ├── Bandi_Praneeth_Resume.pdf
+│   └── favicon.svg
+├── src/
+│   ├── components/              # Reusable UI sections and components
+│   │   ├── About.tsx            # About & education section
+│   │   ├── Certifications.tsx   # Verified credentials & achievements
+│   │   ├── CommandPalette.tsx   # Ctrl+K spotlight search modal
+│   │   ├── Contact.tsx          # Contact form & social coordinates
+│   │   ├── Experience.tsx       # Internship timeline
+│   │   ├── Footer.tsx           # Page footer with navigation links
+│   │   ├── Hero.tsx             # Home hero with circular portrait
+│   │   ├── MouseBlurLight.tsx   # Ambient mouse blur light tracker
+│   │   ├── Navbar.tsx           # Fixed top taskbar with "View Resume" button
+│   │   ├── Projects.tsx         # Verified project showcase
+│   │   ├── Skills.tsx           # Technical skills matrix
+│   │   └── Toast.tsx            # Notification system
+│   ├── data/
+│   │   └── portfolioData.ts     # Central source of truth for resume & content
+│   ├── utils/
+│   │   ├── confetti.ts          # Particle celebration animations
+│   │   └── sound.ts             # Web Audio API sound synthesizer
+│   ├── App.tsx                  # Main application orchestrator & theme router
+│   ├── index.css                # Global styles, fonts, and light/dark themes
+│   └── main.tsx                 # React application entry point
+├── package.json                 # Project dependencies and npm scripts
+├── tsconfig.json                # TypeScript configuration
+├── vite.config.ts               # Vite build configuration
+└── README.md                    # Project documentation
+```
+
+---
+
+## 📬 Connect With Me
+
+- **Email**: [praneethb523@gmail.com](mailto:praneethb523@gmail.com)
+- **GitHub**: [github.com/Praneethbandi05](https://github.com/Praneethbandi05)
+- **LinkedIn**: [linkedin.com/in/bandi-praneeth-1a535031b](https://www.linkedin.com/in/bandi-praneeth-1a535031b)
+- **CodeChef**: [codechef.com/users/vvit23bq1a6106](https://www.codechef.com/users/vvit23bq1a6106)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
