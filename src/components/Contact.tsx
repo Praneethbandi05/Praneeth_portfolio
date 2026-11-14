@@ -39,7 +39,7 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       showToast('Please fill out all required fields.', 'error');
@@ -49,18 +49,57 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
     soundManager.playPulse();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      fireSuccessConfetti();
-      showToast('Message sent! Praneeth will respond promptly.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: 'General Technical Inquiry',
-        message: '',
-      });
-    }, 1000);
+    const formspreeEndpoint = (PERSONAL_INFO.contacts as { formspreeEndpoint?: string }).formspreeEndpoint;
+    const isConfigured = formspreeEndpoint && !formspreeEndpoint.includes('YOUR_FORM_ID');
+
+    if (isConfigured) {
+      try {
+        const response = await fetch(formspreeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          }),
+        });
+
+        if (response.ok) {
+          setIsSubmitting(false);
+          setSubmitted(true);
+          fireSuccessConfetti();
+          showToast(`Message delivered to ${PERSONAL_INFO.contacts.email}!`);
+          setFormData({
+            name: '',
+            email: '',
+            subject: 'General Technical Inquiry',
+            message: '',
+          });
+          return;
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        console.warn('Form submission endpoint error, using mailto fallback:', err);
+      }
+    }
+
+    // Direct mailto fallback so the message is composed and delivered straight to Praneeth's Gmail
+    setIsSubmitting(false);
+    const mailtoUrl = `mailto:${PERSONAL_INFO.contacts.email}?subject=${encodeURIComponent(
+      `[Portfolio Inquiry] ${formData.subject} - from ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `Hello Praneeth,\n\nSender Name: ${formData.name}\nSender Email: ${formData.email}\nTopic: ${formData.subject}\n\nMessage:\n${formData.message}\n`
+    )}`;
+
+    window.location.href = mailtoUrl;
+    setSubmitted(true);
+    fireSuccessConfetti();
+    showToast(`Launching email client to send to ${PERSONAL_INFO.contacts.email}`);
   };
 
   return (
@@ -240,21 +279,29 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
                   <Check className="w-8 h-8" />
                 </div>
                 <h3 className={`text-2xl font-display font-black ${isLight ? 'text-slate-950' : 'text-white'}`}>
-                  Message Sent!
+                  Message Dispatched!
                 </h3>
                 <p className={`text-sm max-w-md mx-auto font-medium ${isLight ? 'text-slate-700' : 'text-slate-400'}`}>
-                  Thank you for reaching out. I have received your message and will get back to you shortly.
+                  Thank you for reaching out! Inquiries are delivered directly to <span className="font-bold text-cyan-600">{PERSONAL_INFO.contacts.email}</span>. Praneeth will reply promptly.
                 </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className={`px-6 py-2.5 rounded-xl text-xs font-mono font-bold border transition-colors ${
-                    isLight
-                      ? 'bg-slate-100 hover:bg-slate-200 text-slate-900 border-slate-300 shadow-sm'
-                      : 'bg-white/5 hover:bg-white/10 text-white border-white/10'
-                  }`}
-                >
-                  Send Another Message
-                </button>
+                <div className="pt-2 flex flex-wrap justify-center gap-3">
+                  <a
+                    href={`mailto:${PERSONAL_INFO.contacts.email}?subject=${encodeURIComponent('[Follow-up] Portfolio Inquiry')}`}
+                    className="px-5 py-2 rounded-xl text-xs font-mono font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-colors"
+                  >
+                    Open Mail Client
+                  </a>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className={`px-5 py-2 rounded-xl text-xs font-mono font-bold border transition-colors ${
+                      isLight
+                        ? 'bg-slate-100 hover:bg-slate-200 text-slate-900 border-slate-300 shadow-sm'
+                        : 'bg-white/5 hover:bg-white/10 text-white border-white/10'
+                    }`}
+                  >
+                    Send Another Message
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -343,6 +390,20 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
                   <Send className="w-4 h-4" />
                   <span>{isSubmitting ? 'Transmitting Message...' : 'Send Message'}</span>
                 </button>
+
+                <div className="pt-2 text-center">
+                  <span className={`text-[11px] font-mono ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
+                    Prefer direct email?{' '}
+                  </span>
+                  <a
+                    href={`mailto:${PERSONAL_INFO.contacts.email}?subject=${encodeURIComponent('[Portfolio Inquiry] Project / Opportunity')}`}
+                    className={`text-[11px] font-mono font-bold underline transition-colors ${
+                      isLight ? 'text-cyan-700 hover:text-cyan-900' : 'text-cyan-400 hover:text-cyan-300'
+                    }`}
+                  >
+                    Open Gmail / Mail Client directly &rarr;
+                  </a>
+                </div>
               </form>
             )}
           </div>
