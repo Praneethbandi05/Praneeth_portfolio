@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, CodeChefIcon } from './Icons';
 import { PageId } from './Navbar';
 
 interface FooterProps {
@@ -58,8 +58,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
             </div>
           )}
 
-          {/* External Social Profiles */}
-          <div className="flex items-center gap-3">
+          {/* External Social & Coding Profiles */}
+          <div className="flex items-center gap-2.5">
             <a
               href={PERSONAL_INFO.contacts.github}
               target="_blank"
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
                   ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-white'
               }`}
-              title="GitHub"
+              title="GitHub Profile"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -82,9 +82,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
                   ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
               }`}
-              title="LinkedIn"
+              title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-4 h-4" />
+            </a>
+            <a
+              href={PERSONAL_INFO.contacts.codechef}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-lg border transition-colors ${
+                isLight
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-amber-600'
+                  : 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-400'
+              }`}
+              title="CodeChef Profile (600+ Problems Solved)"
+            >
+              <CodeChefIcon className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${PERSONAL_INFO.contacts.email}`}
@@ -93,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
                   ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
               }`}
-              title="Email"
+              title="Email Bandi Praneeth"
             >
               <Mail className="w-4 h-4" />
             </a>

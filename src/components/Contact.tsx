@@ -4,7 +4,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { fireSuccessConfetti } from '../utils/confetti';
 import { useToast } from './Toast';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { GithubIcon, LinkedinIcon, CodeChefIcon } from './Icons';
 
 interface ContactProps {
   theme?: 'dark' | 'light';
@@ -98,7 +98,7 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
                 Direct Contact Information
               </h2>
               <p className={`text-xs leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-                Feel free to email, call, or reach out on professional platforms.
+                Feel free to email, call, or explore my developer profiles.
               </p>
             </div>
 
@@ -177,34 +177,51 @@ export const Contact: React.FC<ContactProps> = ({ theme = 'light' }) => {
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-3 pt-2">
+            {/* Social & Coding Platform Links (GitHub, LinkedIn, CodeChef) */}
+            <div className="grid grid-cols-3 gap-2.5 pt-2">
               <a
                 href={PERSONAL_INFO.contacts.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex-1 p-3 rounded-2xl border flex items-center justify-center gap-2 text-xs font-medium transition-all ${
+                className={`p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 text-xs font-medium transition-all group ${
                   isLight
                     ? 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800'
                     : 'bg-white/[0.03] hover:bg-white/[0.08] border-white/10 text-white'
                 }`}
+                title="View GitHub Profile"
               >
-                <GithubIcon className="w-4 h-4 text-slate-500" />
-                <span>GitHub</span>
+                <GithubIcon className="w-4 h-4 text-slate-400 group-hover:text-cyan-400 transition-colors" />
+                <span className="font-semibold text-[11px]">GitHub</span>
               </a>
 
               <a
                 href={PERSONAL_INFO.contacts.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex-1 p-3 rounded-2xl border flex items-center justify-center gap-2 text-xs font-medium transition-all ${
+                className={`p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 text-xs font-medium transition-all group ${
                   isLight
                     ? 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800'
                     : 'bg-white/[0.03] hover:bg-white/[0.08] border-white/10 text-white'
                 }`}
+                title="View LinkedIn Profile"
               >
-                <LinkedinIcon className="w-4 h-4 text-cyan-600" />
-                <span>LinkedIn</span>
+                <LinkedinIcon className="w-4 h-4 text-cyan-500 group-hover:scale-110 transition-transform" />
+                <span className="font-semibold text-[11px]">LinkedIn</span>
+              </a>
+
+              <a
+                href={PERSONAL_INFO.contacts.codechef}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-3 rounded-2xl border flex flex-col items-center justify-center gap-1.5 text-xs font-medium transition-all group ${
+                  isLight
+                    ? 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-800'
+                    : 'bg-white/[0.03] hover:bg-white/[0.08] border-white/10 text-white'
+                }`}
+                title="View CodeChef Profile (600+ Solved)"
+              >
+                <CodeChefIcon className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                <span className="font-semibold text-[11px]">CodeChef</span>
               </a>
             </div>
           </div>

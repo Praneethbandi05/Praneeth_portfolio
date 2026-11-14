@@ -1,8 +1,9 @@
 import React from 'react';
-import { Award, ShieldCheck, CheckCircle, Code2, Flame, Sparkles } from 'lucide-react';
-import { CERTIFICATIONS, ACHIEVEMENTS } from '../data/portfolioData';
+import { Award, ShieldCheck, CheckCircle, Code2, Flame, Sparkles, ExternalLink } from 'lucide-react';
+import { CERTIFICATIONS, ACHIEVEMENTS, PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { fireHackathonConfetti } from '../utils/confetti';
+import { CodeChefIcon } from './Icons';
 
 interface CertificationsProps {
   theme?: 'dark' | 'light';
@@ -130,6 +131,23 @@ export const Certifications: React.FC<CertificationsProps> = ({ theme = 'light' 
                 <p className={`text-xs leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
                   {achieve.description}
                 </p>
+
+                {/* Direct CodeChef Profile Link on Problems Solved Card */}
+                {achieve.title.toLowerCase().includes('codechef') || idx === 3 ? (
+                  <div className="pt-2">
+                    <a
+                      href={PERSONAL_INFO.contacts.codechef}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 border border-amber-500/20 text-xs font-mono font-medium transition-colors"
+                      title="Inspect CodeChef Profile"
+                    >
+                      <CodeChefIcon className="w-3.5 h-3.5 text-amber-500" />
+                      <span>CodeChef Profile</span>
+                      <ExternalLink className="w-3 h-3 ml-0.5" />
+                    </a>
+                  </div>
+                ) : null}
               </div>
 
               <div className="mt-4 pt-3 border-t border-slate-200 text-[11px] font-mono text-cyan-600 font-semibold flex items-center gap-1">

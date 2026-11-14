@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { X, Cpu, Layers, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
+import { X, ExternalLink, Cpu, Layers, CheckCircle2, AlertCircle, ArrowRight } from 'lucide-react';
+import { GithubIcon } from './Icons';
 import { Project } from '../types/portfolio';
 import { soundManager } from '../utils/sound';
 
@@ -135,9 +136,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             </div>
           </div>
 
-          {/* Action Links */}
-          {project.liveUrl && (
-            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+          {/* Action Links with GitHub Repository button */}
+          <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-medium transition-colors border border-white/10"
+              >
+                <GithubIcon className="w-4 h-4 text-cyan-400" />
+                <span>View Source Code (GitHub)</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+              </a>
+            )}
+
+            {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -147,8 +161,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <span>Live Interactive Demo</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

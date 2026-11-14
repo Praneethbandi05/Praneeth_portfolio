@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Download } from 'lucide-react';
+import { GithubIcon, CodeChefIcon } from './Icons';
 import { soundManager } from '../utils/sound';
 
 export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'blog' | 'contact';
@@ -107,13 +108,41 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </div>
 
-          {/* Action Toolbar: Exclusive "View Resume" button (⌘K and Audio toggle removed per request) */}
-          <div className="hidden sm:flex items-center">
+          {/* Action Toolbar: GitHub + CodeChef + Exclusive "View Resume" Button */}
+          <div className="hidden sm:flex items-center gap-2">
+            <a
+              href="https://github.com/Praneethbandi05"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-xl border transition-colors ${
+                isLight
+                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-slate-900'
+                  : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-white'
+              }`}
+              title="GitHub Profile"
+            >
+              <GithubIcon className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://www.codechef.com/users/praneethbandi05"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-xl border transition-colors ${
+                isLight
+                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-amber-600'
+                  : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-amber-400'
+              }`}
+              title="CodeChef Profile (600+ Solved)"
+            >
+              <CodeChefIcon className="w-4 h-4" />
+            </a>
+
             <a
               href="/Bandi_Praneeth_Resume.pdf"
               download="Bandi_Praneeth_Resume.pdf"
               onClick={() => soundManager.playPulse()}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:-translate-y-0.5 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:-translate-y-0.5 transition-all ml-1"
               title="View & Download Official Uploaded Resume"
             >
               <Download className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -169,12 +198,37 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            <div className={`pt-2 border-t flex items-center justify-end ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
+            <div className={`pt-2 border-t flex items-center justify-between ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://github.com/Praneethbandi05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-lg border ${
+                    isLight ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-slate-300'
+                  }`}
+                  title="GitHub"
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.codechef.com/users/praneethbandi05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2 rounded-lg border ${
+                    isLight ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-slate-300'
+                  }`}
+                  title="CodeChef"
+                >
+                  <CodeChefIcon className="w-4 h-4" />
+                </a>
+              </div>
+
               <a
                 href="/Bandi_Praneeth_Resume.pdf"
                 download="Bandi_Praneeth_Resume.pdf"
                 onClick={() => soundManager.playPulse()}
-                className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs shadow-md"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs shadow-md"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>View Resume</span>
