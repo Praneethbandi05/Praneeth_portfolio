@@ -47,8 +47,8 @@ export const PERSONAL_INFO = {
     github: "https://github.com/Praneethbandi05",
     githubUsername: "Praneethbandi05",
     linkedin: "https://www.linkedin.com/in/bandi-praneeth-1a535031b",
-    codechef: "https://www.codechef.com/users/praneethbandi05",
-    codechefUsername: "praneethbandi05",
+    codechef: "https://www.codechef.com/users/vvit23bq1a6106",
+    codechefUsername: "vvit23bq1a6106",
     resumePdfUrl: "/Bandi_Praneeth_Resume.pdf"
   },
   stats: [

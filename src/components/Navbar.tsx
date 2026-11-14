@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { GithubIcon, CodeChefIcon } from './Icons';
 import { soundManager } from '../utils/sound';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'blog' | 'contact';
 
@@ -111,12 +112,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Action Toolbar: GitHub + CodeChef + Exclusive "View Resume" Button */}
           <div className="hidden sm:flex items-center gap-2">
             <a
-              href="https://github.com/Praneethbandi05"
+              href={PERSONAL_INFO.contacts.github}
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-xl border transition-colors ${
                 isLight
-                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-slate-900'
+                  ? 'bg-white hover:bg-slate-100 border-slate-300 text-slate-800 hover:text-slate-950 shadow-sm'
                   : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-white'
               }`}
               title="GitHub Profile"
@@ -125,12 +126,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             <a
-              href="https://www.codechef.com/users/praneethbandi05"
+              href={PERSONAL_INFO.contacts.codechef}
               target="_blank"
               rel="noopener noreferrer"
               className={`p-2 rounded-xl border transition-colors ${
                 isLight
-                  ? 'bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-amber-600'
+                  ? 'bg-white hover:bg-slate-100 border-slate-300 text-slate-800 hover:text-amber-600 shadow-sm'
                   : 'bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-amber-400'
               }`}
               title="CodeChef Profile (600+ Solved)"
@@ -201,22 +202,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className={`pt-2 border-t flex items-center justify-between ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
               <div className="flex items-center gap-2">
                 <a
-                  href="https://github.com/Praneethbandi05"
+                  href={PERSONAL_INFO.contacts.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`p-2 rounded-lg border ${
-                    isLight ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-slate-300'
+                    isLight ? 'bg-white border-slate-300 text-slate-800' : 'bg-white/5 border-white/10 text-slate-300'
                   }`}
                   title="GitHub"
                 >
                   <GithubIcon className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://www.codechef.com/users/praneethbandi05"
+                  href={PERSONAL_INFO.contacts.codechef}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`p-2 rounded-lg border ${
-                    isLight ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-white/5 border-white/10 text-slate-300'
+                    isLight ? 'bg-white border-slate-300 text-slate-800' : 'bg-white/5 border-white/10 text-slate-300'
                   }`}
                   title="CodeChef"
                 >

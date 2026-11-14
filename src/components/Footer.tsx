@@ -31,11 +31,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
 
   return (
     <footer className={`border-t py-10 font-sans transition-colors duration-500 ${
-      isLight ? 'bg-slate-100/90 border-slate-200 text-slate-600' : 'border-white/10 bg-[#05070c] text-slate-400'
+      isLight ? 'bg-slate-50 border-slate-300 text-slate-800' : 'border-white/10 bg-[#05070c] text-slate-400'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b ${
-          isLight ? 'border-slate-200' : 'border-white/5'
+          isLight ? 'border-slate-300' : 'border-white/5'
         }`}>
           {/* Quick Page Links */}
           {onNavigate && (
@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className={`transition-colors ${
-                    isLight ? 'text-slate-600 hover:text-cyan-600' : 'hover:text-cyan-400 text-slate-400'
+                    isLight ? 'text-slate-700 hover:text-cyan-700 font-bold' : 'hover:text-cyan-400 text-slate-400'
                   }`}
                 >
                   {link.label}
@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
               rel="noopener noreferrer"
               className={`p-2 rounded-lg border transition-colors ${
                 isLight
-                  ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
+                  ? 'bg-white border-slate-300 text-slate-800 hover:text-slate-950 shadow-sm'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-white'
               }`}
               title="GitHub Profile"
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
               rel="noopener noreferrer"
               className={`p-2 rounded-lg border transition-colors ${
                 isLight
-                  ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
+                  ? 'bg-white border-slate-300 text-slate-800 hover:text-cyan-600 shadow-sm'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
               }`}
               title="LinkedIn Profile"
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
               rel="noopener noreferrer"
               className={`p-2 rounded-lg border transition-colors ${
                 isLight
-                  ? 'bg-white border-slate-200 text-slate-600 hover:text-amber-600'
+                  ? 'bg-white border-slate-300 text-slate-800 hover:text-amber-600 shadow-sm'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-amber-400'
               }`}
               title="CodeChef Profile (600+ Problems Solved)"
@@ -103,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
               href={`mailto:${PERSONAL_INFO.contacts.email}`}
               className={`p-2 rounded-lg border transition-colors ${
                 isLight
-                  ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
+                  ? 'bg-white border-slate-300 text-slate-800 hover:text-cyan-600 shadow-sm'
                   : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
               }`}
               title="Email Bandi Praneeth"
@@ -115,14 +115,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) =>
 
         {/* Bottom Bar: Copyright & Back to Top */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-          <p className={isLight ? 'text-slate-500' : 'text-slate-500'}>
+          <p className={isLight ? 'text-slate-700 font-medium' : 'text-slate-500'}>
             &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
           </p>
 
           <button
             onClick={scrollToTop}
             className={`flex items-center gap-1.5 transition-colors ${
-              isLight ? 'text-slate-500 hover:text-cyan-600' : 'text-slate-400 hover:text-white'
+              isLight ? 'text-slate-700 hover:text-cyan-700 font-bold' : 'text-slate-400 hover:text-white'
             }`}
           >
             <span>Back to top</span>
