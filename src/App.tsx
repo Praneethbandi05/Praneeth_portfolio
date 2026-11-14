@@ -12,16 +12,14 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 import { CommandPalette } from './components/CommandPalette';
-import { AskPortfolioAI } from './components/AskPortfolioAI';
 import { soundManager } from './utils/sound';
-import { Bot, MessageSquare, X, ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, Mail } from 'lucide-react';
+import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from './data/portfolioData';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
-  const [isAiOpen, setIsAiOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(soundManager.enabled);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
@@ -110,7 +108,7 @@ export default function App() {
                         About &amp; Education
                       </h3>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        Academic background at VVIT (70%), Intermediate (90%), and personal engineering objective.
+                        Academic background at Vasireddy Venkatadri Institute of Technology and personal engineering objective.
                       </p>
                     </div>
                     <div className="text-xs font-semibold text-cyan-400 flex items-center gap-1">
@@ -238,34 +236,6 @@ export default function App() {
 
         {/* Global Footer on All Pages */}
         <Footer onNavigate={navigateTo} />
-
-        {/* Floating AI Assistant Trigger Pill */}
-        <div className="fixed bottom-6 right-6 z-40">
-          {isAiOpen ? (
-            <div className="relative w-[360px] sm:w-[420px] shadow-2xl rounded-3xl overflow-hidden border border-cyan-500/30 animate-in slide-in-from-bottom-5 duration-200">
-              <div className="absolute top-3 right-3 z-30">
-                <button
-                  onClick={() => setIsAiOpen(false)}
-                  className="p-1 rounded-full bg-white/10 hover:bg-white/20 text-white"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <AskPortfolioAI />
-            </div>
-          ) : (
-            <button
-              onClick={() => {
-                soundManager.playClick();
-                setIsAiOpen(true);
-              }}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#0d1424] hover:bg-[#121b30] border border-cyan-500/40 text-cyan-300 font-mono text-xs shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all"
-            >
-              <Bot className="w-4 h-4 text-cyan-400" />
-              <span>Ask Portfolio AI</span>
-            </button>
-          )}
-        </div>
 
         {/* Global Command Palette (⌘K) */}
         <CommandPalette

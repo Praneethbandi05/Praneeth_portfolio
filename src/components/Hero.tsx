@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Terminal, Award, Code2, Cloud, ShieldCheck, Download, FileText, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Code2, Cloud, Award, ShieldCheck, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { NeuralCanvas } from './NeuralCanvas';
 import { soundManager } from '../utils/sound';
@@ -11,76 +11,64 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const roles = PERSONAL_INFO.roles;
+  const [mousePos, setMousePos] = useState({ x: 500, y: 300 });
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const currentRole = roles[roleIndex];
-    let timer: ReturnType<typeof setTimeout>;
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePos({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
 
-    if (!isDeleting && displayedText !== currentRole) {
-      timer = setTimeout(() => {
-        setDisplayedText(currentRole.slice(0, displayedText.length + 1));
-      }, 70);
-    } else if (!isDeleting && displayedText === currentRole) {
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2200);
-    } else if (isDeleting && displayedText !== '') {
-      timer = setTimeout(() => {
-        setDisplayedText(currentRole.slice(0, displayedText.length - 1));
-      }, 35);
-    } else if (isDeleting && displayedText === '') {
-      setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
-    }
-
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, roleIndex, roles]);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden tech-grid-bg">
+    <section
+      ref={containerRef}
+      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden tech-grid-bg"
+    >
       {/* 3D / Canvas Neural Mesh Interactive Visualization */}
       <NeuralCanvas />
 
-      {/* Atmospheric Radial Lighting Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/15 via-indigo-600/10 to-purple-600/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-20 right-10 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none" />
+      {/* Interactive Mouse Tracking Spotlight */}
+      <div
+        className="pointer-events-none absolute inset-0 transition-opacity duration-300 z-[2]"
+        style={{
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.05) 40%, transparent 80%)`,
+        }}
+      />
+
+      {/* Atmospheric Ambient Glows */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-cyan-500/10 via-indigo-600/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Main Container */}
       <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
-        {/* Identity & Sub-header */}
-        <div className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-cyan-400/90 mb-3 flex items-center gap-2">
-          <Terminal className="w-4 h-4 text-cyan-400" />
-          <span>Hello, World. I am</span>
-          <span className="text-white font-bold tracking-normal uppercase bg-white/10 px-2 py-0.5 rounded">
-            {PERSONAL_INFO.name}
-          </span>
+        {/* Subtle Welcome Tag */}
+        <div className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-cyan-400/90 mb-4 flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+          <span>WELCOME TO THE PORTFOLIO OF</span>
         </div>
 
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black tracking-tight text-white leading-[1.08] mb-6">
-          Building Intelligence.
-          <br />
-          <span className="text-gradient-cyan">
-            Creating Possibilities.
+        {/* Highlighted Name as Main Headline: BANDI (White) + PRANEETH (Vibrant Matching Cyan) */}
+        <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-black tracking-tight leading-[0.98] mb-8 select-none">
+          <span className="text-white drop-shadow-[0_10px_35px_rgba(255,255,255,0.18)]">
+            {PERSONAL_INFO.firstName}
+          </span>
+          <br className="sm:hidden" />
+          {' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_10px_40px_rgba(56,189,248,0.35)]">
+            {PERSONAL_INFO.lastName}
           </span>
         </h1>
 
-        {/* Dynamic Cycling Role Box */}
-        <div className="flex items-center justify-center gap-2 text-lg sm:text-2xl md:text-3xl font-mono text-slate-300 font-medium mb-6 h-10">
-          <span className="text-slate-500">&gt;</span>
-          <span className="text-white border-b-2 border-cyan-400 pb-0.5">
-            {displayedText}
-          </span>
-          <span className="w-2.5 h-6 bg-cyan-400 inline-block animate-pulse" />
-        </div>
-
-        {/* Summary Description directly from attached resume */}
+        {/* Clean Summary Description */}
         <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed mb-10 font-sans font-light">
           {PERSONAL_INFO.summary}
         </p>
@@ -92,7 +80,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
               soundManager.playClick();
               onNavigate('projects');
             }}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all group"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all group"
           >
             <span>Explore Projects</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -103,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
               soundManager.playClick();
               onNavigate('experience');
             }}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-cyan-500/40 font-semibold text-sm sm:text-base flex items-center justify-center gap-2 backdrop-blur-md hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-cyan-500/40 font-semibold text-sm sm:text-base flex items-center justify-center gap-2 backdrop-blur-md hover:-translate-y-0.5 transition-all"
           >
             <span>View Experience</span>
           </button>
@@ -116,11 +104,11 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
             className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:border-cyan-400 text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/10"
           >
             <Download className="w-4 h-4" />
-            <span>Download Official CV (PDF)</span>
+            <span>Download CV (PDF)</span>
           </a>
         </div>
 
-        {/* High-Impact Stats Bar from Attached Resume */}
+        {/* High-Impact Stats Bar from Resume */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full max-w-4xl">
           <div
             onClick={() => {

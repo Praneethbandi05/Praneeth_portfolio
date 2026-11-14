@@ -1,26 +1,27 @@
 import { Project, Experience, SkillCategory, Certification } from '../types/portfolio';
 
 export const PERSONAL_INFO = {
-  name: "Bandi Praneeth",
-  title: "Software Engineer | Cloud & Full Stack Developer",
+  name: "BANDI PRANEETH",
+  firstName: "BANDI",
+  lastName: "PRANEETH",
+  title: "Software Engineer & Problem Solver",
   tagline: "Engineering Scalable Systems. Creating Possibilities.",
   summary: "Motivated to apply academic knowledge and practical experience to solve real-world challenges. Eager to contribute to organizational success while continuously learning, growing, and adapting to new opportunities.",
   education: {
     degree: "B.Tech, Computer Science & Engineering (AI & ML)",
     institution: "Vasireddy Venkatadri Institute of Technology",
     period: "2023 – Present",
-    location: "Guntur, Andhra Pradesh, India",
-    grade: "70%"
+    location: "Guntur, Andhra Pradesh, India"
   },
   intermediate: {
     institution: "Sasi Jr Kalasala",
     period: "2021 – 2023",
-    grade: "90%"
+    location: "Andhra Pradesh, India"
   },
   secondary: {
     institution: "Z.P.H Boys High School",
     period: "2020 – 2021",
-    grade: "84%"
+    location: "Andhra Pradesh, India"
   },
   contacts: {
     email: "praneethb523@gmail.com",
@@ -31,13 +32,6 @@ export const PERSONAL_INFO = {
     linkedin: "https://linkedin.com/in/praneethbandi",
     resumePdfUrl: "/Bandi_Praneeth_Resume.pdf"
   },
-  roles: [
-    "Software Engineer",
-    "Full Stack Developer",
-    "Cloud & DevOps Enthusiast",
-    "AI & Intelligent Systems Explorer",
-    "Algorithmic Problem Solver"
-  ],
   stats: [
     { label: "Coding Problems Solved", value: "600+", desc: "Solved 600+ CodeChef problems" },
     { label: "AWS Certified", value: "CLF-C02", desc: "AWS Certified Cloud Practitioner" },
@@ -284,36 +278,5 @@ export const ACHIEVEMENTS = [
     description: "Completed Wipro TalentNext DSE Program training with a focus on SQL and database management.",
     badge: "Certified Training",
     highlight: "Wipro TalentNext"
-  }
-];
-
-export const AI_KNOWLEDGE_BASE = [
-  {
-    keywords: ["who", "about", "bio", "praneeth", "summary", "introduce"],
-    answer: "Bandi Praneeth is an engineering student at Vasireddy Venkatadri Institute of Technology (2023–Present, 70%). He is an AWS Certified Cloud Practitioner (CLF-C02) with internships at Gloom Dev Pvt Ltd (Cloud & Full Stack) and APSSDC (DevOps). He has solved 600+ coding problems on CodeChef, won 1st place in the ACM Student Chapter Hackathon, and served as Student Activity Council leader."
-  },
-  {
-    keywords: ["skills", "technologies", "tech stack", "languages"],
-    answer: "Praneeth's technical skills directly from his resume:\n• Programming Languages: Python, Java, C\n• Cloud & DevOps: AWS, Linux, Docker, Terraform\n• Databases: MySQL, Neo4j\n• Tools & Platforms: Git, GitHub, n8n\n• Web Technologies: HTML, CSS, React"
-  },
-  {
-    keywords: ["projects", "built", "work", "rythu", "trust chit", "cardiovascular", "fundus"],
-    answer: "Praneeth's projects:\n1. Rythu Nestham: Smart Crop Advisory Application in Flutter, helping farmers make informed decisions.\n2. Trust Chit: Chit Fund Management System built with React, SQLite, Node.js, and deployed on AWS cloud.\n3. Cardiovascular Risk Classification: Deep learning project analyzing retinal fundus images with CNNs and Grad-CAM explainability."
-  },
-  {
-    keywords: ["internship", "experience", "gloom dev", "apssdc"],
-    answer: "Praneeth's internships:\n• Cloud & Full Stack Intern at Gloom Dev Pvt Ltd (08/2026–Present): Developing responsive web applications and working with AWS cloud services and backend deployment.\n• DevOps Intern at APSSDC (05/2026–07/2026): Hands-on AWS cloud services, Linux, and DevOps practices for cloud infrastructure and automation."
-  },
-  {
-    keywords: ["certifications", "certified", "aws", "salesforce", "nptel"],
-    answer: "Certifications:\n1. AWS Certified Cloud Practitioner (CLF-C02) – Amazon Web Services\n2. Human Computer Interaction – NPTEL\n3. Responsive Web Design – freeCodeCamp\n4. Salesforce Certified Agentforce Specialist – Salesforce\n5. The Joy of Computing using Python – NPTEL"
-  },
-  {
-    keywords: ["achievements", "hackathon", "codechef", "problems", "iucee", "wipro"],
-    answer: "Key Achievements:\n• Solved 600+ CodeChef problems\n• 1st Place Winner at the ACM Student Chapter Hackathon\n• Led the Student Activity Council (SAC)\n• Selected Member of IUCEE R&D Department\n• Completed Wipro TalentNext DSE Program training"
-  },
-  {
-    keywords: ["contact", "email", "phone", "reach", "hire"],
-    answer: "Contact Bandi Praneeth:\n• Email: praneethb523@gmail.com\n• Phone: +91 7095570399\n• GitHub: https://github.com/PraneethBandi05\n• Resume: You can download the official resume PDF directly from the top bar or contact section."
   }
 ];

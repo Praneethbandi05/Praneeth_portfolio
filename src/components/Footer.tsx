@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Download, Heart } from 'lucide-react';
+import { ArrowUp, Mail, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { GithubIcon, LinkedinIcon } from './Icons';
@@ -44,10 +44,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
               Motivated to apply academic knowledge and practical experience to solve real-world challenges.
             </p>
-            <div className="flex items-center gap-2 text-[11px] font-mono text-emerald-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>System Active &amp; Ready</span>
-            </div>
           </div>
 
           {/* Quick Page Links */}

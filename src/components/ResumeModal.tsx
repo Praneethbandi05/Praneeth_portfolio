@@ -171,7 +171,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
             </div>
 
-            {/* Education */}
+            {/* Education (Percentages Removed) */}
             <div className="space-y-3">
               <h2 className="text-xs uppercase tracking-wider font-mono text-cyan-400 flex items-center gap-2 font-semibold">
                 <GraduationCap className="w-4 h-4" /> Education
@@ -182,12 +182,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                     {PERSONAL_INFO.education.degree}, {PERSONAL_INFO.education.institution}
                   </span>
                   <span className="text-xs font-mono text-cyan-300 font-bold">
-                    {PERSONAL_INFO.education.period} | {PERSONAL_INFO.education.grade}
+                    {PERSONAL_INFO.education.period}
                   </span>
                 </div>
                 <div className="text-xs text-slate-400 flex flex-wrap gap-4 pt-1">
-                  <span>Intermediate, {PERSONAL_INFO.intermediate.institution}: <strong className="text-white">{PERSONAL_INFO.intermediate.grade}</strong> ({PERSONAL_INFO.intermediate.period})</span>
-                  <span>SSC, {PERSONAL_INFO.secondary.institution}: <strong className="text-white">{PERSONAL_INFO.secondary.grade}</strong> ({PERSONAL_INFO.secondary.period})</span>
+                  <span>Intermediate, {PERSONAL_INFO.intermediate.institution} ({PERSONAL_INFO.intermediate.period})</span>
+                  <span>SSC, {PERSONAL_INFO.secondary.institution} ({PERSONAL_INFO.secondary.period})</span>
                 </div>
               </div>
             </div>

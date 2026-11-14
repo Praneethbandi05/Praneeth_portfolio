@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, GraduationCap, Award, CheckCircle2, ArrowRight, User, Terminal } from 'lucide-react';
+import { GraduationCap, Award, CheckCircle2, ArrowRight, User } from 'lucide-react';
 import { PERSONAL_INFO, ACHIEVEMENTS } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { PageId } from './Navbar';
@@ -19,7 +19,7 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
             <span>Profile &amp; Background</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            About Bandi Praneeth
+            About {PERSONAL_INFO.name}
           </h1>
         </div>
         <p className="text-slate-400 max-w-md text-sm leading-relaxed">
@@ -89,9 +89,9 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Right Column: Education & Fast Navigation (5 cols) */}
+        {/* Right Column: Education (WITHOUT percentages) & Fast Navigation (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          {/* Education Breakdown */}
+          {/* Education Breakdown (Percentages Removed) */}
           <div className="p-6 sm:p-8 rounded-3xl glass-panel relative overflow-hidden space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
               <div className="flex items-center gap-2 text-white font-display font-bold text-lg">
@@ -99,20 +99,15 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
                 <span>Education</span>
               </div>
               <span className="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded-full border border-cyan-800/40">
-                Verified Records
+                Academic Record
               </span>
             </div>
 
             {/* B.Tech */}
             <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 space-y-1.5">
-              <div className="flex justify-between items-start">
-                <h4 className="font-semibold text-white text-sm">
-                  {PERSONAL_INFO.education.degree}
-                </h4>
-                <span className="text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded">
-                  {PERSONAL_INFO.education.grade}
-                </span>
-              </div>
+              <h4 className="font-semibold text-white text-sm">
+                {PERSONAL_INFO.education.degree}
+              </h4>
               <div className="text-xs text-slate-300">
                 {PERSONAL_INFO.education.institution}
               </div>
@@ -123,14 +118,9 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
             {/* Intermediate */}
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1">
-              <div className="flex justify-between items-start">
-                <h4 className="font-semibold text-white text-xs">
-                  Intermediate
-                </h4>
-                <span className="text-xs font-mono font-bold text-white bg-white/5 px-2 py-0.5 rounded">
-                  {PERSONAL_INFO.intermediate.grade}
-                </span>
-              </div>
+              <h4 className="font-semibold text-white text-xs">
+                Intermediate
+              </h4>
               <div className="text-xs text-slate-400">
                 {PERSONAL_INFO.intermediate.institution}
               </div>
@@ -141,14 +131,9 @@ export const About: React.FC<AboutProps> = ({ onNavigate }) => {
 
             {/* SSC */}
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-1">
-              <div className="flex justify-between items-start">
-                <h4 className="font-semibold text-white text-xs">
-                  Secondary School (SSC)
-                </h4>
-                <span className="text-xs font-mono font-bold text-white bg-white/5 px-2 py-0.5 rounded">
-                  {PERSONAL_INFO.secondary.grade}
-                </span>
-              </div>
+              <h4 className="font-semibold text-white text-xs">
+                Secondary School (SSC)
+              </h4>
               <div className="text-xs text-slate-400">
                 {PERSONAL_INFO.secondary.institution}
               </div>
