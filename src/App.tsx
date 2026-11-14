@@ -10,16 +10,30 @@ import { Certifications } from './components/Certifications';
 import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ResumeModal } from './components/ResumeModal';
 import { CommandPalette } from './components/CommandPalette';
+import { MouseBlurLight } from './components/MouseBlurLight';
 import { soundManager } from './utils/sound';
 import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, BookOpen } from 'lucide-react';
 
+// Alternating Dark / Light page theme mapping for dynamic UI transitions
+export const PAGE_THEMES: Record<PageId, 'dark' | 'light'> = {
+  home: 'dark',
+  about: 'light',
+  skills: 'dark',
+  projects: 'light',
+  experience: 'dark',
+  certifications: 'light',
+  blog: 'dark',
+  contact: 'light',
+};
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
-  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(soundManager.enabled);
+
+  const currentTheme = PAGE_THEMES[currentPage] || 'dark';
+  const isLight = currentTheme === 'light';
 
   // Hash-based page routing support
   useEffect(() => {
@@ -57,25 +71,29 @@ export default function App() {
 
   return (
     <ToastProvider>
-      <div className="min-h-screen dark bg-[#07090e] text-[#f1f5f9] selection:bg-cyan-500/20 selection:text-cyan-300 font-sans antialiased overflow-x-hidden flex flex-col justify-between">
-        {/* Floating Top Navbar (Light/Dark theme toggle removed) */}
+      <div
+        className={`min-h-screen transition-colors duration-500 font-sans antialiased overflow-x-hidden flex flex-col justify-between ${
+          isLight ? 'light-mode bg-[#f8fafc] text-[#0f172a]' : 'dark bg-[#07090e] text-[#f1f5f9]'
+        }`}
+      >
+        {/* Soft Ambient Light Blur tracking mouse cursor */}
+        <MouseBlurLight theme={currentTheme} />
+
+        {/* Floating Top Navbar with exclusive "View Resume" button */}
         <Navbar
           currentPage={currentPage}
           setCurrentPage={navigateTo}
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
-          onOpenResume={() => setIsResumeOpen(true)}
           soundEnabled={soundEnabled}
           setSoundEnabled={setSoundEnabled}
+          theme={currentTheme}
         />
 
         {/* Main Content Area - Render strictly the Selected Page */}
         <main className="flex-1">
           {currentPage === 'home' && (
             <div className="space-y-16">
-              <Hero
-                onNavigate={navigateTo}
-                onOpenResume={() => setIsResumeOpen(true)}
-              />
+              <Hero onNavigate={navigateTo} />
 
               {/* Quick Navigation Cards on Home Page */}
               <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -84,7 +102,7 @@ export default function App() {
                     Explore Dedicated Sections
                   </h2>
                   <p className="text-xs sm:text-sm text-slate-400 mt-2">
-                    Click to navigate to the individual pages for in-depth credentials, case studies, and research.
+                    Click to navigate to individual pages for in-depth credentials, case studies, and research.
                   </p>
                 </div>
 
@@ -219,32 +237,26 @@ export default function App() {
             </div>
           )}
 
-          {currentPage === 'about' && <About onNavigate={navigateTo} />}
+          {currentPage === 'about' && <About onNavigate={navigateTo} theme={currentTheme} />}
           {currentPage === 'skills' && <Skills />}
-          {currentPage === 'projects' && <Projects onNavigate={navigateTo} />}
+          {currentPage === 'projects' && <Projects onNavigate={navigateTo} theme={currentTheme} />}
           {currentPage === 'experience' && <Experience onNavigate={navigateTo} />}
-          {currentPage === 'certifications' && <Certifications />}
+          {currentPage === 'certifications' && <Certifications theme={currentTheme} />}
           {currentPage === 'blog' && <Blog onNavigate={navigateTo} />}
-          {currentPage === 'contact' && <Contact onOpenResume={() => setIsResumeOpen(true)} />}
+          {currentPage === 'contact' && <Contact theme={currentTheme} />}
         </main>
 
         {/* Global Footer on All Pages */}
-        <Footer onNavigate={navigateTo} />
+        <Footer onNavigate={navigateTo} theme={currentTheme} />
 
         {/* Global Command Palette (⌘K) */}
         <CommandPalette
           isOpen={isCommandPaletteOpen}
           onClose={() => setIsCommandPaletteOpen(false)}
           onNavigate={navigateTo}
-          onOpenResume={() => setIsResumeOpen(true)}
           soundEnabled={soundEnabled}
           setSoundEnabled={setSoundEnabled}
-        />
-
-        {/* Global Resume Viewer / Save PDF Modal */}
-        <ResumeModal
-          isOpen={isResumeOpen}
-          onClose={() => setIsResumeOpen(false)}
+          theme={currentTheme}
         />
       </div>
     </ToastProvider>

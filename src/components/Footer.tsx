@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, Download } from 'lucide-react';
+import { ArrowUp, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { GithubIcon, LinkedinIcon } from './Icons';
@@ -7,9 +7,12 @@ import { PageId } from './Navbar';
 
 interface FooterProps {
   onNavigate?: (page: PageId) => void;
+  theme?: 'dark' | 'light';
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, theme = 'dark' }) => {
+  const isLight = theme === 'light';
+
   const scrollToTop = () => {
     soundManager.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,22 +30,30 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <footer className="border-t border-white/10 bg-[#05070c] pt-16 pb-12 text-slate-400 font-sans">
+    <footer className={`border-t pt-16 pb-12 font-sans transition-colors duration-500 ${
+      isLight ? 'bg-slate-100/90 border-slate-200 text-slate-600' : 'border-white/10 bg-[#05070c] text-slate-400'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-white/5">
+        <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b ${
+          isLight ? 'border-slate-200' : 'border-white/5'
+        }`}>
           {/* Logo & Info */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-600 p-[1px]">
-                <div className="w-full h-full bg-[#07090e] rounded-lg flex items-center justify-center font-display font-black text-xs text-white">
+                <div className={`w-full h-full rounded-lg flex items-center justify-center font-display font-black text-xs ${
+                  isLight ? 'bg-slate-900 text-white' : 'bg-[#07090e] text-white'
+                }`}>
                   BP
                 </div>
               </div>
-              <span className="font-display font-bold text-white text-base tracking-tight">
+              <span className={`font-display font-bold text-base tracking-tight ${
+                isLight ? 'text-slate-900' : 'text-white'
+              }`}>
                 {PERSONAL_INFO.name}
               </span>
             </div>
-            <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
+            <p className={`text-xs max-w-sm leading-relaxed ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>
               Motivated to apply academic knowledge and practical experience to solve real-world challenges.
             </p>
           </div>
@@ -58,7 +69,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onNavigate(link.id);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="hover:text-cyan-400 transition-colors"
+                  className={`transition-colors ${
+                    isLight ? 'text-slate-600 hover:text-cyan-600' : 'hover:text-cyan-400 text-slate-400'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -66,62 +79,63 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
           )}
 
-          {/* External Links & Resume */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="flex items-center gap-3">
-              <a
-                href={PERSONAL_INFO.contacts.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                title="GitHub"
-              >
-                <GithubIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={PERSONAL_INFO.contacts.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-cyan-400 transition-colors"
-                title="LinkedIn"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={`mailto:${PERSONAL_INFO.contacts.email}`}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-cyan-400 transition-colors"
-                title="Email"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
-              <a
-                href="/Bandi_Praneeth_Resume.pdf"
-                download="Bandi_Praneeth_Resume.pdf"
-                className="p-2 rounded-lg bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 transition-colors"
-                title="Save Resume PDF"
-              >
-                <Download className="w-4 h-4" />
-              </a>
-            </div>
-
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-xs font-mono text-white border border-white/10 hover:border-cyan-500/40 transition-all group"
+          {/* External Links */}
+          <div className="flex items-center gap-3">
+            <a
+              href={PERSONAL_INFO.contacts.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-lg border transition-colors ${
+                isLight
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-slate-900'
+                  : 'bg-white/5 border-white/10 text-slate-300 hover:text-white'
+              }`}
+              title="GitHub"
             >
-              <span>Top</span>
-              <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-1 transition-transform text-cyan-400" />
-            </button>
+              <GithubIcon className="w-4 h-4" />
+            </a>
+            <a
+              href={PERSONAL_INFO.contacts.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-2 rounded-lg border transition-colors ${
+                isLight
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
+                  : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
+              }`}
+              title="LinkedIn"
+            >
+              <LinkedinIcon className="w-4 h-4" />
+            </a>
+            <a
+              href={`mailto:${PERSONAL_INFO.contacts.email}`}
+              className={`p-2 rounded-lg border transition-colors ${
+                isLight
+                  ? 'bg-white border-slate-200 text-slate-600 hover:text-cyan-600'
+                  : 'bg-white/5 border-white/10 text-slate-300 hover:text-cyan-400'
+              }`}
+              title="Email"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
-            © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
-          </div>
-          <div className="font-mono text-[11px] text-slate-400">
-            Official Portfolio &amp; Resume Experience
-          </div>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+          <p className={isLight ? 'text-slate-500' : 'text-slate-500'}>
+            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. Built with React, TypeScript &amp; Tailwind CSS.
+          </p>
+
+          <button
+            onClick={scrollToTop}
+            className={`flex items-center gap-1.5 transition-colors ${
+              isLight ? 'text-slate-500 hover:text-cyan-600' : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>
