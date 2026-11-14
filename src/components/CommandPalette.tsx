@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, FolderGit2, Briefcase, Award, Wrench, FileText, Mail, Volume2, VolumeX, Moon, Sun, ArrowRight, X, Home, User } from 'lucide-react';
+import { Search, FolderGit2, Briefcase, Award, Wrench, FileText, Mail, Volume2, VolumeX, Moon, Sun, ArrowRight, X, Home, User, BookOpen } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 import { useToast } from './Toast';
 import { PageId } from './Navbar';
@@ -93,6 +93,16 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
       },
     },
     {
+      id: 'page-blog',
+      category: 'Pages',
+      label: 'Research Blog (Cardiovascular Retinal Fundus AI)',
+      icon: BookOpen,
+      action: () => {
+        onClose();
+        onNavigate('blog');
+      },
+    },
+    {
       id: 'page-contact',
       category: 'Pages',
       label: 'Contact Bandi Praneeth',
@@ -105,7 +115,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
     {
       id: 'act-download-resume',
       category: 'Resume',
-      label: 'Download Official Resume PDF',
+      label: 'Save Official Resume PDF',
       icon: FileText,
       action: () => {
         onClose();
@@ -115,7 +125,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        showToast('Downloading Bandi_Praneeth_Resume.pdf...');
+        showToast('Saving Bandi_Praneeth_Resume.pdf...');
       },
     },
     {

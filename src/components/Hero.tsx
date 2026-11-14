@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden tech-grid-bg"
+      className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden tech-grid-bg"
     >
       {/* 3D / Canvas Neural Mesh Interactive Visualization */}
       <NeuralCanvas />
@@ -46,41 +46,40 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
       />
 
       {/* Atmospheric Ambient Glows */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-cyan-500/10 via-indigo-600/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-gradient-to-tr from-cyan-500/10 via-indigo-600/10 to-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Main Container */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
-        {/* Subtle Welcome Tag */}
-        <div className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-cyan-400/90 mb-4 flex items-center gap-2">
+      <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+        {/* Simple friendly greeting without "WELCOME TO THE PORTFOLIO OF" */}
+        <div className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-cyan-400/90 mb-3 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-          <span>WELCOME TO THE PORTFOLIO OF</span>
+          <span>Hello, I am</span>
         </div>
 
-        {/* Highlighted Name as Main Headline: BANDI (White) + PRANEETH (Vibrant Matching Cyan) */}
-        <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-display font-black tracking-tight leading-[0.98] mb-8 select-none">
-          <span className="text-white drop-shadow-[0_10px_35px_rgba(255,255,255,0.18)]">
+        {/* Refined Proportionate Name Headline: BANDI (White) + PRANEETH (Matching Cyan) */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black tracking-tight leading-[1.05] mb-6 select-none">
+          <span className="text-white drop-shadow-[0_8px_25px_rgba(255,255,255,0.15)]">
             {PERSONAL_INFO.firstName}
           </span>
-          <br className="sm:hidden" />
           {' '}
-          <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_10px_40px_rgba(56,189,248,0.35)]">
+          <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_8px_30px_rgba(56,189,248,0.3)]">
             {PERSONAL_INFO.lastName}
           </span>
         </h1>
 
         {/* Clean Summary Description */}
-        <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed mb-10 font-sans font-light">
+        <p className="max-w-2xl text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed mb-9 font-sans font-light">
           {PERSONAL_INFO.summary}
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-14">
           <button
             onClick={() => {
               soundManager.playClick();
               onNavigate('projects');
             }}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all group"
+            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all group"
           >
             <span>Explore Projects</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -91,7 +90,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
               soundManager.playClick();
               onNavigate('experience');
             }}
-            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-cyan-500/40 font-semibold text-sm sm:text-base flex items-center justify-center gap-2 backdrop-blur-md hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-cyan-500/40 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 backdrop-blur-md hover:-translate-y-0.5 transition-all"
           >
             <span>View Experience</span>
           </button>
@@ -101,10 +100,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
             href="/Bandi_Praneeth_Resume.pdf"
             download="Bandi_Praneeth_Resume.pdf"
             onClick={() => soundManager.playPulse()}
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:border-cyan-400 text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/10"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 hover:border-cyan-400 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-md shadow-cyan-500/10"
           >
             <Download className="w-4 h-4" />
-            <span>Download CV (PDF)</span>
+            <span>Save Resume (PDF)</span>
           </a>
         </div>
 

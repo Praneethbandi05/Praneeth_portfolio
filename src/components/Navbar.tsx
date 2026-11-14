@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, Command, Volume2, VolumeX, Moon, Sun, Download, FileText } from 'lucide-react';
 import { soundManager } from '../utils/sound';
 
-export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'contact';
+export type PageId = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'certifications' | 'blog' | 'contact';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -34,6 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -59,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="fixed top-0 left-0 right-0 z-40 py-3 bg-[#0a0d18]/90 backdrop-blur-xl border-b border-white/10 shadow-[0_10px_35px_-5px_rgba(0,0,0,0.5)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between py-1">
-          {/* Logo / Name - WITHOUT DOMAIN TITLE */}
+          {/* Logo / Name */}
           <button
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-3 text-left group focus:outline-none"
@@ -77,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Desktop Nav Items (Separate Pages) */}
+          {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-full px-3 py-1">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
@@ -86,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
                   onMouseEnter={() => soundManager.playHover()}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all relative ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all relative ${
                     isActive
                       ? 'text-cyan-300 font-semibold bg-white/[0.08] shadow-[0_0_15px_rgba(56,189,248,0.2)]'
                       : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -142,7 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Resume Button - Direct Download & View */}
+            {/* Resume Button - Direct Save & View */}
             <div className="flex items-center gap-1">
               <button
                 onClick={() => {
@@ -160,10 +161,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                 download="Bandi_Praneeth_Resume.pdf"
                 onClick={() => soundManager.playPulse()}
                 className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs shadow-md shadow-cyan-500/20 transition-all"
-                title="Download Attached Resume PDF"
+                title="Save Attached Resume PDF"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Download CV</span>
+                <span>Save CV</span>
               </a>
             </div>
           </div>
@@ -174,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href="/Bandi_Praneeth_Resume.pdf"
               download="Bandi_Praneeth_Resume.pdf"
               className="p-2 rounded-lg bg-cyan-500 text-slate-950 font-bold"
-              title="Download Resume"
+              title="Save Resume"
             >
               <Download className="w-4 h-4" />
             </a>

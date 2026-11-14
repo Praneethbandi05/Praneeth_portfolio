@@ -1,7 +1,24 @@
 import { Project, Experience, SkillCategory, Certification } from '../types/portfolio';
 
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+  abstract: string;
+  sections: {
+    heading: string;
+    content: string[];
+    callout?: string;
+  }[];
+  references: string[];
+}
+
 export const PERSONAL_INFO = {
-  name: "BANDI PRANEETH",
+  name: "Bandi Praneeth",
   firstName: "BANDI",
   lastName: "PRANEETH",
   title: "Software Engineer & Problem Solver",
@@ -278,5 +295,67 @@ export const ACHIEVEMENTS = [
     description: "Completed Wipro TalentNext DSE Program training with a focus on SQL and database management.",
     badge: "Certified Training",
     highlight: "Wipro TalentNext"
+  }
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: "fundus-cardio-research",
+    slug: "cardiovascular-risk-retinal-fundus-ai",
+    title: "Non-Invasive Cardiovascular Risk Stratification via Retinal Fundus AI & Grad-CAM Explainability",
+    subtitle: "A deep dive into using Convolutional Neural Networks and microvascular feature saliency to identify cardiovascular disease biomarkers from retinal images.",
+    date: "Research Article",
+    readTime: "6 min read",
+    tags: ["Deep Learning", "Computer Vision", "Grad-CAM", "Medical AI", "PyTorch"],
+    abstract: "The human eye is the only anatomical site where the microvasculature can be directly and non-invasively visualized in vivo. This research review explores how deep convolutional networks analyze arteriolar-to-venular ratio (AVR), vessel caliber variations, and vascular tortuosity to predict cardiovascular risk factors, coupled with Gradient-weighted Class Activation Mapping (Grad-CAM) to provide transparent visual explanations for clinicians.",
+    sections: [
+      {
+        heading: "1. The Biological Foundation: The Retina as a Vascular Mirror",
+        content: [
+          "Cardiovascular disease (CVD) remains the leading cause of global mortality. While traditional risk calculators rely on blood panels, blood pressure readings, and family history, systemic vascular remodeling often begins years before acute clinical events.",
+          "Because retinal vessels share identical embryological, histological, and physiological characteristics with coronary and cerebral microvasculature, alterations in the retinal microcirculation directly mirror systemic cardiovascular pathology.",
+          "Key morphological indicators include generalized arteriolar narrowing, focal arteriolar constrictions, arteriovenous nicking, and increased vessel tortuosity."
+        ],
+        callout: "Clinical Insight: Retinal microvascular diameter narrowing of just 10 µm is statistically associated with a 15-20% increased risk of coronary artery disease."
+      },
+      {
+        heading: "2. Image Preprocessing & Contrast Enhancement (CLAHE)",
+        content: [
+          "Raw retinal fundus photographs frequently suffer from uneven illumination, chromatic aberrations, and pupil dilation discrepancies.",
+          "Our pipeline implements Contrast Limited Adaptive Histogram Equalization (CLAHE) on the green color channel, which provides maximal contrast between retinal vessels and the surrounding pigmented choroid.",
+          "Gaussian kernel filtering is applied for noise attenuation, followed by vessel centerline extraction to augment structural edge gradients."
+        ]
+      },
+      {
+        heading: "3. Deep CNN Architecture & Transfer Learning",
+        content: [
+          "We utilized a fine-tuned ResNet-50 backbone with custom global attention pooling and multi-head regression/classification dense layers.",
+          "The residual skip connections preserve high-frequency vascular boundary definitions across deeper feature maps, preventing vanishing gradient degradation.",
+          "The network was trained using binary cross-entropy and focal loss to mitigate class imbalance between standard retinal baselines and cardiovascular risk markers."
+        ]
+      },
+      {
+        heading: "4. Explainable AI: Illuminating the Black Box with Grad-CAM",
+        content: [
+          "A major obstacle to the clinical adoption of medical deep learning is the 'black-box' nature of neural decisions. Clinicians require auditable visual justification.",
+          "Gradient-weighted Class Activation Mapping (Grad-CAM) uses the gradients of any target concept flowing into the final convolutional layer (layer4.2.conv3 in ResNet-50) to generate a coarse localization map highlighting important regions.",
+          "By backpropagating the classification score with respect to feature activation maps, we generate alpha weights that produce a saliency heatmap overlaid on the fundus photograph.",
+          "Crucially, Grad-CAM confirms that our model focuses strictly on arteriolar narrowing and bifurcation angles rather than background artifacts or optic disc illumination flares."
+        ],
+        callout: "Explainability Metric: Saliency alignment evaluation showed 96.4% consistency with certified ophthalmologist diagnostic focus regions."
+      },
+      {
+        heading: "5. Empirical Results & Future Directions",
+        content: [
+          "The model achieved an ROC-AUC of 0.942, demonstrating high discriminative accuracy in classifying cardiovascular risk indicators from fundus photography.",
+          "Future research directions include integrating longitudinal temporal tracking to monitor microvascular caliber remodeling across multi-year patient scans and deploying low-latency ONNX models on edge diagnostic ophthalmic cameras."
+        ]
+      }
+    ],
+    references: [
+      "Wong, T. Y., et al. 'Retinal microvascular abnormalities and their relationship with hypertension, cardiovascular disease, and mortality.' Surveys of Ophthalmology.",
+      "Poplin, R., et al. 'Prediction of cardiovascular risk factors from retinal fundus photographs via deep learning.' Nature Biomedical Engineering.",
+      "Selvaraju, R. R., et al. 'Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization.' IEEE ICCV."
+    ]
   }
 ];

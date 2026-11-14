@@ -8,13 +8,13 @@ import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
 import { Certifications } from './components/Certifications';
+import { Blog } from './components/Blog';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
 import { CommandPalette } from './components/CommandPalette';
 import { soundManager } from './utils/sound';
-import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, Mail } from 'lucide-react';
-import { PERSONAL_INFO } from './data/portfolioData';
+import { ArrowRight, User, Wrench, FolderGit2, Briefcase, Award, Mail, BookOpen } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -27,7 +27,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#/', '').replace('#', '') as PageId;
-      const validPages: PageId[] = ['home', 'about', 'skills', 'projects', 'experience', 'certifications', 'contact'];
+      const validPages: PageId[] = ['home', 'about', 'skills', 'projects', 'experience', 'certifications', 'blog', 'contact'];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
       }
@@ -63,7 +63,7 @@ export default function App() {
         {/* Desktop Custom Follower Cursor */}
         <CustomCursor />
 
-        {/* Floating Top Navbar (Without domain title) */}
+        {/* Floating Top Navbar */}
         <Navbar
           currentPage={currentPage}
           setCurrentPage={navigateTo}
@@ -75,7 +75,7 @@ export default function App() {
           setIsDarkMode={setIsDarkMode}
         />
 
-        {/* Main Content Area - Render strictly the Selected Separate Page */}
+        {/* Main Content Area - Render strictly the Selected Page */}
         <main className="flex-1">
           {currentPage === 'home' && (
             <div className="space-y-16">
@@ -91,7 +91,7 @@ export default function App() {
                     Explore Dedicated Sections
                   </h2>
                   <p className="text-xs sm:text-sm text-slate-400 mt-2">
-                    Click to navigate to the individual pages for in-depth credentials and records.
+                    Click to navigate to the individual pages for in-depth credentials, case studies, and research.
                   </p>
                 </div>
 
@@ -126,7 +126,7 @@ export default function App() {
                         <Wrench className="w-5 h-5" />
                       </div>
                       <h3 className="font-display font-bold text-white text-lg group-hover:text-cyan-300 transition-colors">
-                        Skills &amp; Technologies
+                        Skills Matrix
                       </h3>
                       <p className="text-xs text-slate-400 leading-relaxed">
                         Python, Java, C, AWS, Linux, Docker, Terraform, MySQL, Neo4j, n8n, React.
@@ -202,22 +202,22 @@ export default function App() {
                   </div>
 
                   <div
-                    onClick={() => navigateTo('contact')}
+                    onClick={() => navigateTo('blog')}
                     className="p-6 rounded-3xl glass-panel glass-panel-hover border border-white/10 cursor-pointer group flex flex-col justify-between space-y-4"
                   >
                     <div className="space-y-2">
                       <div className="p-3 rounded-2xl bg-purple-500/10 text-purple-400 w-fit">
-                        <Mail className="w-5 h-5" />
+                        <BookOpen className="w-5 h-5" />
                       </div>
                       <h3 className="font-display font-bold text-white text-lg group-hover:text-cyan-300 transition-colors">
-                        Contact &amp; Resume PDF
+                        Research Blog
                       </h3>
                       <p className="text-xs text-slate-400 leading-relaxed">
-                        Send a message, copy contact email, or directly download the official resume PDF.
+                        Deep dive on Retinal Fundus AI, microvascular biomarkers, and Grad-CAM explainability.
                       </p>
                     </div>
                     <div className="text-xs font-semibold text-cyan-400 flex items-center gap-1">
-                      <span>Get in Touch</span>
+                      <span>Read Research Blog</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
@@ -227,10 +227,11 @@ export default function App() {
           )}
 
           {currentPage === 'about' && <About onNavigate={navigateTo} />}
-          {currentPage === 'skills' && <Skills onNavigate={navigateTo} />}
-          {currentPage === 'projects' && <Projects />}
+          {currentPage === 'skills' && <Skills />}
+          {currentPage === 'projects' && <Projects onNavigate={navigateTo} />}
           {currentPage === 'experience' && <Experience onNavigate={navigateTo} />}
           {currentPage === 'certifications' && <Certifications />}
+          {currentPage === 'blog' && <Blog onNavigate={navigateTo} />}
           {currentPage === 'contact' && <Contact onOpenResume={() => setIsResumeOpen(true)} />}
         </main>
 
@@ -249,7 +250,7 @@ export default function App() {
           setSoundEnabled={setSoundEnabled}
         />
 
-        {/* Global Resume Viewer / Download Modal */}
+        {/* Global Resume Viewer / Save PDF Modal */}
         <ResumeModal
           isOpen={isResumeOpen}
           onClose={() => setIsResumeOpen(false)}

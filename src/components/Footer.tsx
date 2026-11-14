@@ -22,6 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
+    { id: 'blog', label: 'Blog' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -97,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 href="/Bandi_Praneeth_Resume.pdf"
                 download="Bandi_Praneeth_Resume.pdf"
                 className="p-2 rounded-lg bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500/30 transition-colors"
-                title="Download Resume PDF"
+                title="Save Resume PDF"
               >
                 <Download className="w-4 h-4" />
               </a>

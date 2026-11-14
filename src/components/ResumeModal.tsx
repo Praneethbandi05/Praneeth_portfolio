@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { X, Download, Printer, ExternalLink, Award, CheckCircle, Mail, Phone, MapPin, Briefcase, GraduationCap } from 'lucide-react';
-import { PERSONAL_INFO, EXPERIENCES, PROJECTS, CERTIFICATIONS, ACHIEVEMENTS, SKILL_CATEGORIES } from '../data/portfolioData';
+import { X, Download, ExternalLink, Award, CheckCircle, Mail, Phone, GraduationCap, Briefcase } from 'lucide-react';
+import { PERSONAL_INFO, EXPERIENCES, PROJECTS, CERTIFICATIONS, ACHIEVEMENTS } from '../data/portfolioData';
 import { soundManager } from '../utils/sound';
 import { fireSuccessConfetti } from '../utils/confetti';
 import { useToast } from './Toast';
@@ -33,7 +33,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
   const handleDownload = () => {
     soundManager.playPulse();
     fireSuccessConfetti();
-    showToast('Downloading official resume PDF...');
+    showToast('Saving official resume PDF...');
     const link = document.createElement('a');
     link.href = '/Bandi_Praneeth_Resume.pdf';
     link.download = 'Bandi_Praneeth_Resume.pdf';
@@ -42,15 +42,10 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
     document.body.removeChild(link);
   };
 
-  const handlePrint = () => {
-    soundManager.playClick();
-    window.print();
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-[#0b0f19] border border-white/10 shadow-2xl flex flex-col text-slate-200 custom-scrollbar">
-        {/* Header Toolbar */}
+        {/* Header Toolbar (Print button removed, only Save PDF) */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#0d1322]/95 backdrop-blur-md border-b border-white/10">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -83,24 +78,15 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </button>
             </div>
 
-            <button
-              onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-xs sm:text-sm font-medium text-slate-300 transition-colors border border-white/10"
-              title="Print Resume"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Print</span>
-            </button>
-
-            {/* Direct Download of Attached Resume */}
+            {/* Direct Save PDF of Attached Resume */}
             <a
               href="/Bandi_Praneeth_Resume.pdf"
               download="Bandi_Praneeth_Resume.pdf"
               onClick={handleDownload}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-xs sm:text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-xs sm:text-sm font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download PDF</span>
+              <span>Save PDF</span>
             </a>
 
             <button
@@ -326,7 +312,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             onClick={handleDownload}
             className="text-cyan-400 hover:text-cyan-300 font-mono font-medium flex items-center gap-1.5"
           >
-            <Download className="w-3.5 h-3.5" /> Download Attached PDF
+            <Download className="w-3.5 h-3.5" /> Save PDF
           </a>
         </div>
       </div>
